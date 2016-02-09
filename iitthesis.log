@@ -1,0 +1,17 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdftex 2014.6.3)  23 JAN 2015 15:21
+entering extended mode
+**C:/Users/Cullen/Desktop/LaTeX/Spring*2015/MATH*591*-*M.S.*Thesis/iitthesis.cl
+s
+
+("C:/Users/Cullen/Desktop/LaTeX/Spring 2015/MATH 591 - M.S. Thesis/iitthesis.cl
+s"
+! Undefined control sequence.
+l.33 \typeout
+             {Document Class `IIT_THESIS' <May 2003>.}
+? 
+! Emergency stop.
+l.33 \typeout
+             {Document Class `IIT_THESIS' <May 2003>.}
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!

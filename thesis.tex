@@ -1,0 +1,89 @@
+\documentclass{iitthesis}
+
+% Document Options:
+%
+% Note if you want to save paper when printing drafts,
+% replace the above line by
+%
+%   \documentclass[draft]{iitthesis}
+%
+% See Help file for more about options.
+
+\usepackage[dvips]{graphicx}    % This package is used for Figures
+\usepackage{rotating}           % This package is used for landscape mode.
+\usepackage{float}
+\usepackage{epsfig}
+\usepackage{subfigure}          % These two packages, epsfig and subfigure, are used for creating subplots.
+% Packages are explained in the Help document.
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage[ruled, vlined]{algorithm2e}
+
+\begin{document}
+
+%%% Declarations for Title Page %%%
+\title{Reliable Quasi-Monte Carlo\\
+   with Control Variates}
+\author{Da Li}
+\degree{Master of Science}
+\dept{Applied Mathematics}
+\date{Aug 01}
+\copyrightnoticetrue      % crate copyright page or not
+%\coadvisortrue           % add co-advisor. activate it by removing % symbol to add co-advisor
+\maketitle                % create title and copyright pages
+
+
+\prelimpages         % Settings of preliminary pages are done with \prelimpages command
+
+\iffalse
+
+\include{acknowl}
+
+
+% Table of Contents
+\tableofcontents
+\clearpage
+
+% List of Tables
+\listoftables
+
+\clearpage
+
+%List of Figures
+\listoffigures
+
+\clearpage
+
+%List of Symbols(optional)
+\listofsymbols
+ \SymbolDefinition{$\beta$}{probability of non-detecting bad data}
+ \SymbolDefinition{$\delta$}{Transition Coefficient Constant for the Design of Linear-Phase FIR Filters}
+ \SymbolDefinition{$\zeta$}{Reflection Coefficient Parameter}
+
+ \clearpage
+
+\include{abstract}
+
+\fi
+
+\textpages     % Settings of text-pages are done with \textpages command
+
+% Chapters are created with \Chapter{title} command
+\include{chapter1}         % Introductory Chapter
+\include{chapter2}         % Chapter 2
+\include{chapter3}         % Chapter 3
+\include{chapter4}         % Chapter 4
+%\include{appendixA}
+%\include{appendixB}
+
+
+\clearpage
+
+
+
+
+%\bibliographystyle{plain}
+%\bibliography{mybib}
+
+\end{document}  % end of document
