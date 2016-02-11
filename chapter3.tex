@@ -1,32 +1,38 @@
 \Chapter{Reliable Adaptive QMC Sobol with CV}
-\section{Theory}
-\subsection{Idea to add control variates to cubSobol}
+\Section{Theory}
+
+\Subsection{Idea to add control variates to cubSobol}
+
 The idea is similar to traditional control variates technique for Monte-Carlo.
-If we know the integration of a function $\boldsymbol{h}=(h_1,\dots,h_J)$ on the interval same as our $f$,
-say $\int_{[0,1)^d}h_jdx=\theta_j$, then we can define a new function $g$
+If we know the integration of a function $\boldsymbol{h}=(h_1,\dots,h_J)$ on the interval same as our $f$, say $\int_{[0,1)^d}h_jdx=\theta_j$, then we can define a new function $g$
 \begin{align}\label{eq:defg}
     & g:=f-(\boldsymbol{h}-\boldsymbol{\theta})\boldsymbol{\beta}\\
     \notag
     &\text{s.t. }\boldsymbol{\theta}=(\theta_1,\dots,\theta_J),
     \boldsymbol{\beta}=(\beta_1,\dots,\beta_J)^T
 \end{align}
+
 Then easily we can find that if we replace $f$ with $g$, the integration stays the same.
 \[
 	\int_{[0,1)^d}gdx
         =\int_{[0,1)^d}f-(\boldsymbol{h}-\boldsymbol{\theta})\boldsymbol{\beta}dx
 			=\int_{[0,1)^d}fdx
 \]
-However, as we stated in chapter 3, we can not find optimal $\beta$ by minimizing variance of estimator like Monte-Carlo. Instead we have a different way to estimate error with adaptive QMC method introduced in chapter 2.\\
+
+However, as we stated in chapter 3, we can not find optimal $\beta$ by minimizing variance of estimator like Monte-Carlo. Instead we have a different way to estimate error with adaptive QMC method introduced in chapter 2.
+
 Recall equation~\eqref{} our error bound for the new estimator of $g$ still holds
 \begin{equation}\label{eq:qmccvErr}
 	\Big|\int_{[0,1)^d}gdx - \hat{I}_m(g)\Big| \leq a(r,m) \sum_{\lfloor 2^{m-r-1} \rfloor}^{2^{m-r}-1} |\hat{g}_{m,k}|
 \end{equation}
+
 Naturally, the new estimator become
 \begin{equation}\label{eq:estcv}
     \hat{I}_m({g}): = \frac{1}{b^m}\sum_{i=0}^{b^m-1}g(z_i+\Delta)
 \end{equation}
 
-\subsection{How to choose $\beta$?} 
+\Subsection{Optimizing $\beta$} 
+
 From~\eqref{eq:qmccvErr} it is clear that the optimal $\beta$ is the one that minimize the error term. 
 \begin{align}
     \label{eq:optbeta1}
@@ -46,6 +52,7 @@ From~\eqref{eq:qmccvErr} it is clear that the optimal $\beta$ is the one that mi
     & \notag 
     &&\hat{\boldsymbol{H}_j}=(\hat{h}_{b^{m-r-1},j}-\hat{\theta}_j,\dots, \hat{h}_{b^{m-r}-1,j}-\hat{\theta}_j)^T
 \end{align}
+
 The second equivalence is not hard to get, but the third one may not be so obvious. Let's consider it backwards. Suppose we have a vector A and it's $\mathcal{L}_1$-norm.
 \[
    A=
@@ -58,11 +65,16 @@ The second equivalence is not hard to get, but the third one may not be so obvio
     \|A\|_1=\sum_{i=1}^{n}|f_i-z_i|, \quad
     z_i:=(\boldsymbol{h}_i-\boldsymbol{\theta})
 \]
+
 If we replace the index,$A$ is exactly what's inside the $\mathcal{L}_1$-norm in ~\eqref{eq:optbeta3}. 
 Hence we justified the third equivalence. The reason we use an approximation instead, i.e. the $\mathcal{L}_1$-norm, is because there is no efficient way to solve it compared to existing least square methods.
-\subsection{Can we get rid of $\theta$?}
-We noticed a problem in solution for optimal $\beta$, which is we do a lot of subtractions with $\theta$. This could be a large cost when we have difficult functions which means $b^{m-r}$ could be very large number. Therefore we present a way to avoid that part. \\
-The idea is form a observation that Walsh transform of $\theta$ in~\eqref{qe:optbeta2} is actually zero, since $\hat{h}_\kappa = \hat{g}_\kappa-\theta\delta_{\kappa,0}$ and the summation is not start from $\kappa=0$.\\
+
+\Subsection{The problem with $\theta$}
+
+We noticed a problem in solution for optimal $\beta$, which is we do a lot of subtractions with $\theta$. This could be a large cost when we have difficult functions which means $b^{m-r}$ could be very large number. Therefore we present a way to avoid that part.
+
+The idea is form a observation that Walsh transform of $\theta$ in~\eqref{qe:optbeta2} is actually zero, since $\hat{h}_\kappa = \hat{g}_\kappa-\theta\delta_{\kappa,0}$ and the summation is not start from $\kappa=0$.
+
 This simplifies~\eqref{eq:optbeta3} to the following. Note that we only need the information of function $f$ and $h$ to calculate $\beta^*$, $\theta$ has been get rid of the optimization process.
 \begin{align}
     \boldsymbol{\beta}^*
@@ -75,6 +87,7 @@ This simplifies~\eqref{eq:optbeta3} to the following. Note that we only need the
     & \notag 
     &&\hat{\boldsymbol{H}_j}=(\hat{h}_{b^{m-r-1},j},\dots, \hat{h}_{b^{m-r}-1,j})^T
 \end{align}
+
 The same problem happened with the estimator~\ref{eq:estcv}.We have the similar solution for that.
 \begin{align}
     \notag
@@ -85,11 +98,12 @@ The same problem happened with the estimator~\ref{eq:estcv}.We have the similar 
     \label{eq:estcvnew}
     & = \frac{1}{b^m}\sum_{i=0}^{b^m-1}[f(z_i+\Delta)-\boldsymbol{h}(z_i+\Delta)\boldsymbol{\beta}]+\boldsymbol{\theta}\boldsymbol{\beta}
 \end{align}
-After organize it the in format of~\eqref{eq:estcvnew}, $\theta$ is eliminated from the summation part.\\
-From these two parts of work on $\theta$ we managed to save $\frac{b-1}{b}b^{m-r}+b^m$ operations of subtraction.
 
-\section{Algorithm}
-Now combining the work from ~\ref{art:cubSobol} and our previous work, we have the following algorithm for reliable adaptive QMC with control variates.
+After organize it the in format of~\eqref{eq:estcvnew}, $\theta$ is eliminated from the summation part. From these two parts of work on $\theta$ we managed to save $\frac{b-1}{b}b^{m-r}+b^m$ operations of subtraction.
+
+\Section{Algorithm}
+
+Now combining the work from~\ref{art:cubSobol} and our previous work, we have the following algorithm for reliable adaptive QMC with control variates.
 \begin{algorithm}
 \DontPrintSemicolon
 \KwData{function $f$ and $\boldsymbol{H}$; 
@@ -133,4 +147,6 @@ Now combining the work from ~\ref{art:cubSobol} and our previous work, we have t
 \caption{Reliable Adaptive QMC with control variates}\label{alg:qmccv}
 \end{algorithm}
 
-\section{Theorem}
+\Section{Theorem}
+
+To be added.

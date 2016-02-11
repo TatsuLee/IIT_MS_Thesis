@@ -1,8 +1,31 @@
 \contentsline {chapter}{\noindent ACKNOWLEDGEMENT}{iii}
 \contentsline {chapter}{\noindent LIST OF TABLES}{v}
 \contentsline {chapter}{\noindent LIST OF FIGURES}{vi}
-\contentsline {chapter}{\noindent ABSTRACT}{vii}
+\contentsline {chapter}{\noindent LIST OF SYMBOLS}{vii}
+\contentsline {chapter}{\noindent ABSTRACT}{viii}
 \vspace *{3pt}
-\contentsline {chapter}{\makebox [0.75in][r]{1.}\hspace *{3pt} \uppercase {Introduction}}{1}
+\contentsline {chapter}{\makebox [0.75in][r]{1.}\hspace *{3pt} \uppercase {Background}}{1}
 \vspace *{10pt}
+\vspace {-10pt}
+\contentsline {section}{\makebox [0.3in][r]{1.1.} \hspace *{3pt}QMC}{1}
+\vspace {-10pt}
+\contentsline {section}{\makebox [0.3in][r]{1.2.} \hspace *{3pt}Control Variates}{1}
+\vspace {-10pt}
+\contentsline {section}{\makebox [0.3in][r]{1.3.} \hspace *{3pt}Reliable Adaptive QMC with digital sequence}{3}
 \noindent CHAPTER \vspace {-10pt}
+\vspace *{3pt}
+\contentsline {chapter}{\makebox [0.75in][r]{2.}\hspace *{3pt} \uppercase {Reliable Adaptive QMC Sobol with CV}}{5}
+\vspace *{10pt}
+\vspace {-10pt}
+\contentsline {section}{\makebox [0.3in][r]{2.1.} \hspace *{3pt}Theory}{5}
+\vspace {-10pt}
+\contentsline {section}{\makebox [0.3in][r]{2.2.} \hspace *{3pt}Algorithm}{7}
+\vspace {-10pt}
+\contentsline {section}{\makebox [0.3in][r]{2.3.} \hspace *{3pt}Theorem}{7}
+\vspace *{3pt}
+\contentsline {chapter}{\makebox [0.75in][r]{3.}\hspace *{3pt} \uppercase {Numerical Experiment}}{9}
+\vspace *{10pt}
+\vspace {-10pt}
+\contentsline {section}{\makebox [0.3in][r]{3.1.} \hspace *{3pt}When beta is not accurate?}{9}
+\vspace {-10pt}
+\contentsline {section}{\makebox [0.3in][r]{3.2.} \hspace *{3pt}Option Pricing}{9}

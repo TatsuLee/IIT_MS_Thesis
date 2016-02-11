@@ -1,5 +1,10 @@
 %%% Abstract %%%
 \begin{abstract}           % abstract environment, this is optional
-\par Your Abstract goes here!
-% or \input{abstract.tex}  %you need a separate abstract.tex file to include it.
-\end{abstract}
+
+With Quasi-Monte Carlo(QMC) methods being implemented in a guaranteed adaptive algorithm recently, possibility of combining that with traditional proficiency improvement techniques for Monte Carlo(MC) such as control variates is brought to table. 
+
+The problem for adding control variates to QMC is that optimal control variate coefficient for QMC is generally not the same as MC. Here we propose a method for computing the optimal control variate coefficients with guaranteed adaptive QMC algorithm. One merit of control variate is that there is always a good solution as good as using no control variates. And our method is implemented in an efficient way that even in that case the extra cost for control variates is not significant.
+
+As for examples we will include two 16 dimensional integration on financial problem. One is pricing arithmetic mean Asian option with geometric mean Asian option as control variates and the other is barrier option with European option as control variates. 
+Our results show that with good control variates, the cost of adaptive QMC is greatly reduced compared with no control variates cases.
+ \end{abstract}
