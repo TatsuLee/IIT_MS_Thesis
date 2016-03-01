@@ -1,0 +1,12 @@
+\begin{thebibliography}{1}
+
+\bibitem{hickernell2014reliable}
+F.~J. Hickernell and L.~A.~J. Rugama, ``Reliable adaptive cubature using
+  digital sequences,'' {\em arXiv preprint arXiv:1410.8615}, 2014.
+
+\bibitem{hickernell2005control}
+F.~J. Hickernell, C.~Lemieux, A.~B. Owen, {\em et~al.}, ``Control variates for
+  quasi-monte carlo,'' {\em Statistical Science}, vol.~20, no.~1, pp.~1--31,
+  2005.
+
+\end{thebibliography}

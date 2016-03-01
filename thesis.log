@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.7.20)  11 FEB 2016 10:17
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.7.20)  1 MAR 2016 03:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -286,46 +286,31 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \c@algocf=\count111
 \algocf@algoframe=\box37
 \algocf@algobox=\box38
-) (./thesis.aux (./acknowl.aux) (./abstract.aux) (./chapter2.aux)
-(./chapter3.aux
-
-LaTeX Warning: Label `eq:optbeta4' multiply defined.
-
-) (./chapter4.aux))
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 332.
+Package: cite 2015/02/27  v 5.5
+) (./thesis.aux
+(./abstract.aux) (./chapter2.aux))
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
  [1
 
-]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 34.
+] [2
 
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 34.
- [2
-
-]
-\openout2 = `acknowl.aux'.
-
-
-(./acknowl.tex [3
-
-
-]) (./thesis.toc
+] (./thesis.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 1.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -339,35 +324,30 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write3
 \openout3 = `thesis.toc'.
 
- [4
-
-
-]
+ [3]
 (./thesis.lot)
 \tf@lot=\write4
 \openout4 = `thesis.lot'.
 
- [5
+ [4
 
 ] (./thesis.lof)
 \tf@lof=\write5
 \openout5 = `thesis.lof'.
 
- [6
-
-] [7
+ [5
 
 ]
 \openout2 = `abstract.aux'.
 
- (./abstract.tex [8
+ (./abstract.tex [6
 
 
 ])
 \openout2 = `chapter2.aux'.
 
  (./chapter2.tex
-Overfull \hbox (9.68312pt too wide) in paragraph at lines 27--29
+Overfull \hbox (9.68312pt too wide) in paragraph at lines 26--28
 []\OT1/cmr/m/n/12 Now sup-pose we have a known func-tion $\OML/cmm/m/it/12 h$ \
 OT1/cmr/m/n/12 and its value on the in-ter-val $[] \OML/cmm/m/it/12 h\OT1/cmr/m
 /n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 dx \OT1/cmr/m/n/12 =
@@ -375,7 +355,12 @@ OT1/cmr/m/n/12 and its value on the in-ter-val $[] \OML/cmm/m/it/12 h\OT1/cmr/m
  []
 
 
-LaTeX Warning: Reference `' on page 1 undefined on input line 31.
+LaTeX Warning: Reference `' on page 1 undefined on input line 30.
+
+
+Overfull \hbox (23.5887pt too wide) in paragraph at lines 40--40
+[] 
+ []
 
 [1
 
@@ -384,83 +369,28 @@ LaTeX Warning: Reference `' on page 1 undefined on input line 31.
 
 ] [2]
 Missing character: There is no é in font cmr12!
+ [3]
 File: figures/cone.bmp Graphic file (type QTm)
  <use  "figures/cone.bmp" >
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [3] [4]
-\openout2 = `chapter3.aux'.
-
- (./chapter3.tex
-
-LaTeX Warning: Reference `' on page 5 undefined on input line 24.
-
-[5
+) [4] [5] (./thesis.bbl) [6
 
 
 
-]
-
-LaTeX Warning: Reference `qe:optbeta2' on page 6 undefined on input line 76.
-
-[6]
-
-LaTeX Warning: Reference `art:cubSobol' on page 7 undefined on input line 106.
-
-
-LaTeX Warning: Reference `alg:kappamap' on page 7 undefined on input line 146.
-
-
-LaTeX Warning: Reference `alg:walshcoef' on page 7 undefined on input line 146.
-
-
-) [7] [8]
-\openout2 = `chapter4.aux'.
-
- (./chapter4.tex
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: Reference `' on page 9 undefined on input line 45.
-
-[9
-
-
-
-]
-
-LaTeX Warning: Reference `BarrierPara' on page 10 undefined on input line 61.
-
-
-LaTeX Warning: Reference `tb:BarrierResults' on page 10 undefined on input line
- 75.
-
-
-LaTeX Warning: Reference `tb:BarrierResults' on page 10 undefined on input line
- 96.
-
-)
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10] [11] (./thesis.aux (./acknowl.aux) (./abstract.aux) (./chapter2.aux)
-(./chapter3.aux) (./chapter4.aux))
+] (./thesis.aux (./abstract.aux) (./chapter2.aux))
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 3395 strings out of 493710
- 44701 string characters out of 6145916
- 134624 words of memory out of 5000000
- 6649 multiletter control sequences out of 15000+600000
- 12051 words of font info for 44 fonts, out of 8000000 for 9000
+ 3408 strings out of 493710
+ 44843 string characters out of 6145916
+ 132565 words of memory out of 5000000
+ 6686 multiletter control sequences out of 15000+600000
+ 10234 words of font info for 39 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 34i,19n,28p,519b,417s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,13n,24p,519b,234s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on thesis.pdf (19 pages).
+Output written on thesis.pdf (12 pages).
