@@ -1,20 +1,15 @@
 \Chapter{Numerical Experiment}
-\Section{When beta is not accurate?}
-
-Note that in algorthm~\ref{alg:qmccv}, we didn't recalculate $\beta$ for every iteration. The reason is that for most functions this is not neccesary, but in certain case $\beta$ need to be updated to get the right answer. Here is an example showing that for certain strange functions beta needs to be updated. 
-
-\Section{Option Pricing}
-
 Option Pricing has always been a challenging topic in financial mathematics.
 Here we are going to demonstrate several examples of pricing different options with ccontrol variates.
 
-\Subsection{Asian Option}
+\Section{Asian Option}
 
 There are two types of asian options, depends on which types of mean you want to use. For this example we take arithematic mean asian call option as our target function, whose payoff function is
 \[ C_{T}^{Amean} = \max\Big(\frac{1}{d}\sum_{j=1}^{d}S(jT/d)-K, 0\Big)\]
 
 \begin{table}[h]
     \centering
+	\caption{Parameter Setup for Up and In Barrier Call Option}
 	\begin{tabular}{lllllll}
 		\hline\hline
         S0 & K & TimeVector & r & volatility & abstol & reltol \\[0.5ex]
@@ -22,11 +17,11 @@ There are two types of asian options, depends on which types of mean you want to
         120  & 130 & 1/52:1/52:16/52 & 0.01 & 0.5 & 1e-3 & 0\\[1ex] 
         \hline
 	\end{tabular}
-	\caption{Parameter Setup for Up and In Barrier Call Option}
 \end{table}
 
 \begin{table}[h]
     \centering
+	\caption{Results of cubSobol, cv\_old and cv\_new with Asian Option}
     \begin{tabular}{rrrrrr}  
     \hline\hline
 	\multicolumn{3}{c}{Sample Size}
@@ -39,27 +34,26 @@ There are two types of asian options, depends on which types of mean you want to
     &0.2783&0.1034&0.0673\\[1ex]
     \hline
 	\end{tabular}
-	\caption{Results of cubSobol, cv\_old and cv\_new with Asian Option}
 \end{table}
 
-Figure ~\ref{} shows decrease rate the walsh coefficients for the target function and control variates in this example.
+Figure ~\ref{fg:cvEX1} shows decrease rate the walsh coefficients for the target function and control variates in this example.
 
-\iffalse
 \begin{figure}[h]
     \centering
     %\setlength{\unitlength}{0.14in}     % selecting unit length
-    \caption{Walsh coefficients of $f$}
     \includegraphics[width=0.8\textwidth]{figures/cvEx1.eps}
+    \label{fg:cvEX1}
+    \caption{Walsh coefficients of $f$}
 \end{figure}
-\fi
 
-\Subsection{Barrier Option}
+\Section{Barrier Option}
 
 We will take up and in barrier call option as an example. Here is the payoff function for up and in barrier call option.
 \[ C_{T}^{U\&I} = (S_T-K)^+1_{ \{\max S_t \geq Barrier\}} \]
 
 From the payoff function it is naturally to consider european call option as control variates. Since if we take the barrier same as strike price, then this is just an european call option. Table~\ref{BarrierPara} shows our setup for the barrier option.
 \begin{table}[h]
+\label{tb:BarrierPara}
     \caption{Parameter Setup for Up and In Barrier Call Option}
     \centering
 	\begin{tabular}{lllllll}
@@ -69,12 +63,13 @@ From the payoff function it is naturally to consider european call option as con
         120  & 130 & 1/52:1/52:16/52 & 0.01 & 0.5 & 1e-3 & 0\\[1ex]
         \hline
 	\end{tabular}
-\label{tb:BarrierPara}
 \end{table}
 
 We then took three different barrier as listed in table~\ref{tb:BarrierResults}, then we compared both oringinal cubSobol algorithm and the one with our modification as described in Chapter 4. 
 \begin{table}[h]
     \centering
+    \label{tb:BarrierResults}
+	\caption{Results of cubSobol, cv\_old and cv\_new with Barrier Option}
     \begin{tabular}{lrrrrrr}
     \hline\hline
 	Barrier &\multicolumn{3}{c}{Sample Size}
@@ -91,6 +86,5 @@ We then took three different barrier as listed in table~\ref{tb:BarrierResults},
     & 1.876& 0.0270 & 0.0199 \\[1ex]
     \hline
 	\end{tabular}
-	\caption{Results of cubSobol, cv\_old and cv\_new with Barrier Option}
 \end{table}
 We can see from the results in table~\ref{tb:BarrierResults} that new CV method takes less time than the old one, and both of them are much faster than QMC without CV.
