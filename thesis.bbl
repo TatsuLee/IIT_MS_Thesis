@@ -4,9 +4,30 @@
 F.~J. Hickernell and L.~A.~J. Rugama, ``Reliable adaptive cubature using
   digital sequences,'' {\em arXiv preprint arXiv:1410.8615}, 2014.
 
+\bibitem{avramidis1996integrated}
+A.~N. Avramidis and J.~R. Wilson, ``Integrated variance reduction strategies
+  for simulation,'' {\em Operations Research}, vol.~44, no.~2, pp.~327--346,
+  1996.
+
 \bibitem{hickernell2005control}
 F.~J. Hickernell, C.~Lemieux, A.~B. Owen, {\em et~al.}, ``Control variates for
   quasi-monte carlo,'' {\em Statistical Science}, vol.~20, no.~1, pp.~1--31,
   2005.
+
+\bibitem{fishman2013monte}
+G.~Fishman, {\em Monte Carlo: concepts, algorithms, and applications}.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem{niederreiter2010quasi}
+H.~Niederreiter, {\em Quasi-Monte Carlo Methods}.
+\newblock Wiley Online Library, 2010.
+
+\bibitem{owen2006warnock}
+A.~B. Owen, ``On the warnock-halton quasi-standard error,'' {\em Monte Carlo
+  Methods and Applications mcma}, vol.~12, no.~1, pp.~47--54, 2006.
+
+\bibitem{rugama2014adaptive}
+L.~A.~J. Rugama and F.~J. Hickernell, ``Adaptive multidimensional integration
+  based on rank-1 lattices,'' {\em arXiv preprint arXiv:1411.1966}, 2014.
 
 \end{thebibliography}

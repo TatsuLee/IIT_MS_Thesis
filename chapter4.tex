@@ -1,11 +1,17 @@
 \Chapter{Numerical Experiment}
 Option Pricing has always been a challenging topic in financial mathematics.
 Here we are going to demonstrate several examples of pricing different options with ccontrol variates.
+All the options in this chapter are under geomatric brownian motion pricing model. 
 
 \Section{Asian Option}
 
 There are two types of asian options, depends on which types of mean you want to use. For this example we take arithematic mean asian call option as our target function, whose payoff function is
 \[ C_{T}^{Amean} = \max\Big(\frac{1}{d}\sum_{j=1}^{d}S(jT/d)-K, 0\Big)\]
+
+Here we use geometric mean asian payoff as the control variates. The payoff function for which is 
+\[ C_{T}^{gmean} = \max\Big(\Big[\prod_{j=1}^{d}S(jT/d) \Big]^\frac{1}{d}-K, 0\Big)\]
+
+And the exact price of geometric mean asian call option under geometric brownian motion is
 
 \begin{table}[h]
     \centering
@@ -41,7 +47,7 @@ Figure ~\ref{fg:cvEX1} shows decrease rate the walsh coefficients for the target
 \begin{figure}[h]
     \centering
     %\setlength{\unitlength}{0.14in}     % selecting unit length
-    \includegraphics[width=0.8\textwidth]{figures/cvEx1.eps}
+    \includegraphics[width=\textwidth]{figures/cvEx1.eps}
     \label{fg:cvEX1}
     \caption{Walsh coefficients of $f$}
 \end{figure}
@@ -52,6 +58,9 @@ We will take up and in barrier call option as an example. Here is the payoff fun
 \[ C_{T}^{U\&I} = (S_T-K)^+1_{ \{\max S_t \geq Barrier\}} \]
 
 From the payoff function it is naturally to consider european call option as control variates. Since if we take the barrier same as strike price, then this is just an european call option. Table~\ref{BarrierPara} shows our setup for the barrier option.
+Payoff function for European option is
+\[ C_{T} = \max (S_T-K,0)\]
+
 \begin{table}[h]
 \label{tb:BarrierPara}
     \caption{Parameter Setup for Up and In Barrier Call Option}

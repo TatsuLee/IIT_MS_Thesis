@@ -1,9 +1,13 @@
 \Chapter{Conclusion}
 \Section{Discussion}
 
-So far there are only few Quasi\_Monte Carlo algorithms that can adaptively determine the sample size needed based on intergrand values. This is because the estimation of error for QMC is hard. Several studies show that if using Quasi standard error there will be some serious drawbacks\cite{}. There is also a way using internal replications of i.i.d. randomized QMC rules, but the number of replications are not known\cite{}.
+So far there are only few Quasi\_Monte Carlo algorithms that can adaptively determine the sample size needed based on integrand values. This is because the estimation of error for QMC is hard. Several studies show that if using Quasi standard error there will be some serious drawbacks\cite{owen2006warnock}. There is also a way using internal replications of i.i.d. Randomized QMC rules, but the number of replications are not known\cite{hickernell2005control}.
 
 For control variates the research progress is also limited since its hard to estimate the value of $beta$ as we stated in chapter 3. 
 
 In our two numerical examples, using the proper control variates gave great results.  Also our modified algorithm for the $\theta$ problem works as expected.   
+
 \Section{Future work}
+
+Currently we only have method implemented in Sobol sequences. One further possible work is that we can extend this methods on rank-1 lattices\cite{rugama2014adaptive}. The idea for getting CV coefficients is the same, but due to the different structure for digital sequences, some effort has to be done for adaption of the method. 
+

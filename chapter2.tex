@@ -1,25 +1,37 @@
 \Chapter{Background}
-
 \Section{Problem Setup}
 
-\Section{Digital Sequence}
+Numerical integration problems is involved in fields such as physics,
+, mathematical finance, biology, computer graphics, and many others fields.It usually happens when it is hard to solve some integral analytically. Therefore one has to use numerical methods for such problems. 
+And Monte-Carlo method is the general way to solve problems in such case\cite{fishman2013monte}. The method can be simply explained in the following way. 
+
+Suppose we have the following standard integration approximation problem whose format is 
+\begin{equation}
+    \label{eq:setup}
+    I= \int_{[0,1)^d}f(x)dx
+\end{equation}
+
+Then we will take sample of $n$ points $\{\mathbf{x_0},\dots, \mathbf{x_n}\}\in [0,1)^d$ follow the uniform distribuation randomly, then form a estimator in form of  
+\[
+\hat{I}(f)=\frac{1}{n}\sum_{i=1}^{n}f(X_i)
+\]
+
+However, there are several problem with simple Monte-Carlo method\cite{niederreiter2010quasi}.
+First, it is difficult to generate truly random samples. Second, error bound for MC works only probabilistic sense. And last, in many applications the
+convergence rate of MC is considered not fast enough. 
+
+Hence QMC method were introduced to address these problems. For QMC method the estimator is almost the same with MC. The difference is that the sample points are taken from low discrepency sequence, which is determinsticlly chosen instead of random.   
+We will briefly rewiew one method for constructing such sequence that we used for our application in the next section. 
+
+\Section{Sobol Sequence}
 
 
 \Section{Control Variates}
 
 Control variates has been know as variance reduction technique used in Monte Carlo methods. In this section we will brief review the ideas and some results of this methods.
-
-Suppose we have the following integration approximation problem
-\[I= \int_{[0,1)^d}f(x)dx\]
-
-If we use Monte-Carlo method, the estimator should be 
-\[
-\hat{I}(f)=\frac{1}{n}\sum_{i=1}^{n}f(X_i), X_i\sim \mathcal{U}[0,1)^d
-\]
-
  
-Now suppose we have a known function $h$ and its value on the interval
-$\int_{[0,1)^d} h(x)dx = \theta$.  We construct a new estimator as the following 
+Suppose we want to solve the integration problem~\eqref{eq:setup} showed earlier, now we have a known function $h$ and its value on the interval
+$\int_{[0,1)^d} h(x)dx = \theta$.  We then construct a new estimator as the following 
 \[ \hat{I}_{cv}(f)=\frac{1}{n}\sum_{i=1}^{n}\Big[ f(X_i)-\beta_{mc}[h(X_i)-\theta] \Big] \quad s.t.\; X_i\sim \mathcal{U}[0,1), \; i.i.d.\]
 
 We can easily see it's an unbiased estimator, i.e. $\mathbb{E}(\hat{I}_{cv}) = I$.
@@ -87,7 +99,7 @@ The first inequality($\bigcirc \leq \Diamond$) means the sum of the larger index
 The cone give some meanings for the functions about how they should behave to get the err bound formula~\eqref{eq:errBound}. This means that $|\hat{f}_\kappa|$ does not dramatically bounce back as $\kappa$ goes to infinity. Note that in Figure~\ref{fg:cone} we call circles the err bound, this is proven to be true and under the cone conditions we can estimate it using discrete Walsh coefficients instead of true Walsh coefficients.
 \begin{figure}[h]
     \centering
+    \includegraphics[width=\textwidth]{figures/cone.eps}
     \caption{Cone condition for reliable adpative QMC algorithm}
-    \includegraphics[width=0.7\textwidth]{figures/cone.bmp}
     \label{fg:cone}
 \end{figure}
