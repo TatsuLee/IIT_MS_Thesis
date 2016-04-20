@@ -2,18 +2,18 @@
 
 \Section{What are we going to do?}
 
-Recently there are some great results from construction of Quasi-Monte Carlo(QMC) methods that can adaptively choose a sample size for given error tolerances\cite{hickernell2014reliable}.   
-Our work is trying to combine reliable Quasi-Monte Carlo methods with control variates. We will justify the theory behind it, construct a practical algorithm which can be implemented and tested through high dimensional integration examples.
+Recently there are some great results from construction of Quasi Monte Carlo (QMC) methods that can adaptively choose a sample size for given error tolerances\cite{hickernell2014reliable}.   
+Our work is trying to combine reliable QMC methods with control variates. We will justify the theory behind it, construct a practical algorithm which can be implemented and tested through high dimensional integration examples.
 
 \Section{Why this is a good idea?} 
 
-Control Variates(CV) is known to be a variance reduction technique for simple Monte-Carlo(MC) methods\cite{avramidis1996integrated}.
-While QMC, which can be viewd as a determinstic version of MC, outperforms MC for many integrals. 
-Naturally we are wondering if QMC can also benefit the CV technique. If that is possible, it can be especially useful for problems where we can easily find good control variates.
+Control Variates (CV) is a variance reduction technique for IID MC methods.
+QMC can be viewed as a deterministic version of IID MC, which outperforms MC for many integrals\cite{avramidis1996integrated}. 
+Naturally we wonder if QMC can also benefit from the CV technique. If that is possible, it can be especially useful for problems where we can easily find good control variates.
 
 \Section{What's the challenge?}
 
-The challenge is that the optimal control variate coefficient for QMC is generally not the same as for simple Monte Carlo, as explained by Hickernell, Lemieux, and Owen\cite{hickernell2005control}. This requires us to figure out a right way to get the optimal coeffcients for control variates with Quasi-Monte Carlo.
+The challenge is that the optimal control variate coefficient for QMC is generally not the same as for simple Monte Carlo, as explained by Hickernell, Lemieux, and Owen\cite{hickernell2005control}. This requires us to figure out a right way to get the optimal coefficients for control variates with Quasi-Monte Carlo.
 
 \Section{Outline}
 

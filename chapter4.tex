@@ -1,10 +1,29 @@
 \Chapter{Numerical Experiment}
 Option Pricing has always been a challenging topic in financial mathematics.
 Here we are going to demonstrate several examples of pricing different options with ccontrol variates.
-All the options in this chapter are under geomatric brownian motion pricing model. 
+Note that all the options in this chapter are under geomatric brownian motion (GBM) pricing model. 
 
-\Section{Asian Option}
+\Section{Accuracy}
 
+The first thing we want to test is whether our algorithm provides the `accurate' solution. This means if the function satisfies the cone condition, the difference between our estimation and true value should be bounded by the pre-defined error tolerance. Naturally we have to know the exact value of our integral to calculate the exact error of our results. Therefore we choose European option and geomatric mean Asian option as our target function because they have exact solution under GBM model.
+
+\Subsection{European option}
+
+\Subsection{geomatric mean Asian option}
+
+
+\Section{Efficiency}
+
+Now that we know our algorithm provides the desired results, we will go on test the time efficiency of our algorithm. 
+Here we can not talking about time complexity using big O notation for the results depend not only on dimention but also heavyly on target function. 
+Instead we do experiments to test the `efficiency' of our algorithm in the following two meanings. 
+The first one is that we want to know how our algorithm performs without using control variates. 
+We know our algorithm is a bit slower compared to the original cubature sobol algorithm \cite{hickernell2014reliable} when not using control variates. 
+The question is how small the gap is. 
+If there is no significant difference, then we will gain confidence for using it on instances without control variates. 
+The second one is naturally we want to see how much time one can save for using control variates. Of course this depends on how good the control variates is and we will put various control variates to test later.         
+
+\Subsection{arithmatic mean Asian Option}
 There are two types of asian options, depends on which types of mean you want to use. For this example we take arithematic mean asian call option as our target function, whose payoff function is
 \[ C_{T}^{Amean} = \max\Big(\frac{1}{d}\sum_{j=1}^{d}S(jT/d)-K, 0\Big)\]
 
@@ -57,7 +76,7 @@ Figure ~\ref{fg:cvEX1} shows decrease rate the walsh coefficients for the target
 We will take up and in barrier call option as an example. Here is the payoff function for up and in barrier call option.
 \[ C_{T}^{U\&I} = (S_T-K)^+1_{ \{\max S_t \geq Barrier\}} \]
 
-From the payoff function it is naturally to consider european call option as control variates. Since if we take the barrier same as strike price, then this is just an european call option. Table~\ref{BarrierPara} shows our setup for the barrier option.
+From the payoff function it is naturally to consider european call option as control variates. Since if we take the barrier same as strike price, then this is just an European call option. Table~\ref{BarrierPara} shows our setup for the barrier option.
 Payoff function for European option is
 \[ C_{T} = \max (S_T-K,0)\]
 

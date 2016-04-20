@@ -1,10 +1,13 @@
 %%% Abstract %%%
 \begin{abstract}           % abstract environment, this is optional
 
-With Quasi-Monte Carlo(QMC) methods being implemented in a guaranteed adaptive algorithm recently, possibility of combining that with traditional proficiency improvement techniques for Monte Carlo(MC) such as control variates is brought to table. 
+Recently Quasi Monte Carlo (QMC) methods have been implemented in a guaranteed adaptive algorithm. This raises the possibility of combining adaptive QMC with efficiency improvement techniques for IID Monte Carlo (MC) such as control variates. 
 
-The problem for adding control variates to QMC is that optimal control variate coefficient for QMC is generally not the same as MC. Here we propose a method for computing the optimal control variate coefficients with guaranteed adaptive QMC algorithm. One merit of control variate is that there is always a good solution as good as using no control variates. And our method is implemented in an efficient way that even in that case the extra cost for control variates is not significant.
+The challenge for adding control variates to QMC is that optimal control variate coefficient for QMC is generally not the same as that for MC. 
+Here we propose a method for computing the optimal control variate coefficients with a guaranteed adaptive QMC algorithm. 
+One merit of control variates is that it is theoretically no worse than using no control variates. 
+Our method is implemented in an efficient way so that the extra cost for control variates is not significant.
 
-As for examples we will include two 16 dimensional integration on financial problem. One is pricing arithmetic mean Asian option with geometric mean Asian option as control variates and the other is barrier option with European option as control variates. 
-Our results show that with good control variates, the cost of adaptive QMC is greatly reduced compared with no control variates cases.
+Our new adaptive QMC algorithm with control variates is illustrated by two financial problems. One is pricing an arithmetic mean Asian option with geometric mean Asian option as control variates and the other is barrier option with European option as control variates. 
+Our results show that with good control variates, the cost of adaptive QMC is greatly reduced compared to vanilla QMC.
  \end{abstract}

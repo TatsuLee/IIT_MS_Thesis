@@ -1,26 +1,27 @@
 \Chapter{Background}
 \Section{Problem Setup}
 
-Numerical integration problems is involved in fields such as physics,
-, mathematical finance, biology, computer graphics, and many others fields.It usually happens when it is hard to solve some integral analytically. Therefore one has to use numerical methods for such problems. 
-And Monte-Carlo method is the general way to solve problems in such case\cite{fishman2013monte}. The method can be simply explained in the following way. 
+Numerical integration problems are involved in fields such as physics, mathematical finance, biology, computer graphics, and many others fields. 
+It usually happens when it is hard to solve some integral analytically. Therefore one has to use numerical methods for such problems.  
+MC method is the general way to solve problems in such case\cite{fishman2013monte}. The method can be simply explained in the following way. 
 
-Suppose we have the following standard integration approximation problem whose format is 
+Suppose we have the following standard integration approximation problem whose format is: 
 \begin{equation}
     \label{eq:setup}
-    I= \int_{[0,1)^d}f(x)dx
+    I= \int_{[0,1)^d}f(x)dx.
 \end{equation}
-
-Then we will take sample of $n$ points $\{\mathbf{x_0},\dots, \mathbf{x_n}\}\in [0,1)^d$ follow the uniform distribuation randomly, then form a estimator in form of  
+Then we take sample of $n$ points $\{\mathbf{x_0},\dots, \mathbf{x_n}\}\in [0,1)^d$ follow the uniform distribuation randomly, and construct the following MC estimator:
 \[
-\hat{I}(f)=\frac{1}{n}\sum_{i=1}^{n}f(X_i)
+\hat{I}(f)=\frac{1}{n}\sum_{i=1}^{n}f(X_i).
 \]
 
-However, there are several problem with simple Monte-Carlo method\cite{niederreiter2010quasi}.
-First, it is difficult to generate truly random samples. Second, error bound for MC works only probabilistic sense. And last, in many applications the
-convergence rate of MC is considered not fast enough. 
+However, there are several problem with IID MC method\cite{niederreiter2010quasi}.
+First, it is difficult to generate truly random samples. Second, error bound for IID MC works only probabilistic sense. 
+Second, in many applications the convergence rate of MC is considered not fast enough. 
 
-Hence QMC method were introduced to address these problems. For QMC method the estimator is almost the same with MC. The difference is that the sample points are taken from low discrepency sequence, which is determinsticlly chosen instead of random.   
+Hence QMC method were introduced to address these problems. 
+For QMC method the estimator is almost the same with MC. 
+The difference is that the sample points are taken from low discrepency sequence, which is determinsticlly chosen instead of random.   
 We will briefly rewiew one method for constructing such sequence that we used for our application in the next section. 
 
 \Section{Sobol Sequence}
@@ -28,7 +29,8 @@ We will briefly rewiew one method for constructing such sequence that we used fo
 
 \Section{Control Variates}
 
-Control variates has been know as variance reduction technique used in Monte Carlo methods. In this section we will brief review the ideas and some results of this methods.
+CV is a well known variance reduction technique used in MC simulation. 
+It is ofen used when a 'simpler' version of the origin problem can be solved explicitly. In this section we briefly review the ideas and some results of this methods.
  
 Suppose we want to solve the integration problem~\eqref{eq:setup} showed earlier, now we have a known function $h$ and its value on the interval
 $\int_{[0,1)^d} h(x)dx = \theta$.  We then construct a new estimator as the following 

@@ -20,7 +20,7 @@
 \vspace {-10pt}
 \contentsline {section}{\makebox [0.3in][r]{2.1.} \hspace *{3pt}Problem Setup}{3}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{2.2.} \hspace *{3pt}Sobol Sequence}{4}
+\contentsline {section}{\makebox [0.3in][r]{2.2.} \hspace *{3pt}Sobol Sequence}{3}
 \vspace {-10pt}
 \contentsline {section}{\makebox [0.3in][r]{2.3.} \hspace *{3pt}Control Variates}{4}
 \vspace {-10pt}
@@ -44,15 +44,17 @@
 \contentsline {chapter}{\makebox [0.75in][r]{4.}\hspace *{3pt} \uppercase {Numerical Experiment}}{15}
 \vspace *{10pt}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{4.1.} \hspace *{3pt}Asian Option}{15}
+\contentsline {section}{\makebox [0.3in][r]{4.1.} \hspace *{3pt}Accuracy}{15}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{4.2.} \hspace *{3pt}Barrier Option}{16}
+\contentsline {section}{\makebox [0.3in][r]{4.2.} \hspace *{3pt}Efficiency}{15}
+\vspace {-10pt}
+\contentsline {section}{\makebox [0.3in][r]{4.3.} \hspace *{3pt}Barrier Option}{16}
 \vspace *{3pt}
-\contentsline {chapter}{\makebox [0.75in][r]{5.}\hspace *{3pt} \uppercase {Conclusion}}{18}
+\contentsline {chapter}{\makebox [0.75in][r]{5.}\hspace *{3pt} \uppercase {Conclusion}}{19}
 \vspace *{10pt}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{5.1.} \hspace *{3pt}Discussion}{18}
+\contentsline {section}{\makebox [0.3in][r]{5.1.} \hspace *{3pt}Discussion}{19}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{5.2.} \hspace *{3pt}Future work}{18}
+\contentsline {section}{\makebox [0.3in][r]{5.2.} \hspace *{3pt}Future work}{19}
 \vspace *{0pt}
-\contentsline {chapter}{\noindent BIBLIOGRAPHY}{19}
+\contentsline {chapter}{\noindent BIBLIOGRAPHY}{20}
