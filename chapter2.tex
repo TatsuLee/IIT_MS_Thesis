@@ -1,8 +1,8 @@
 \Chapter{Background}
-\Section{Problem Setup}
+\Section{Problem setup}
 
 Numerical integration problems are involved in fields such as physics, mathematical finance, biology, computer graphics, and many others fields. 
-It usually happens when it is hard to solve some integral analytically. Therefore one has to use numerical methods for such problems.  
+It usually happens when it is hard to solve some integral analytically. Therefore, one has to use numerical methods for such problems.  
 MC method is the general way to solve problems in such case\cite{fishman2013monte}. The method can be simply explained in the following way. 
 
 Suppose we have the following standard integration approximation problem whose format is: 
@@ -15,61 +15,66 @@ Then we take sample of $n$ points $\{\mathbf{x_0},\dots, \mathbf{x_n}\}\in [0,1)
 \hat{I}(f)=\frac{1}{n}\sum_{i=1}^{n}f(X_i).
 \]
 
-However, there are several problem with IID MC method\cite{niederreiter2010quasi}.
+However, there are several problems with IID MC method\cite{niederreiter2010quasi}.
 First, it is difficult to generate truly random samples. Second, error bound for IID MC works only probabilistic sense. 
 Second, in many applications the convergence rate of MC is considered not fast enough. 
 
-Hence QMC method were introduced to address these problems. 
+Hence, QMC method were introduced to address these problems. 
 For QMC method the estimator is almost the same with MC. 
 The difference is that the sample points are taken from low discrepency sequence, which is determinsticlly chosen instead of random.   
 We will briefly rewiew one method for constructing such sequence that we used for our application in the next section. 
 
-\Section{Sobol Sequence}
+\Section{Sobol squence}
 
 
-\Section{Control Variates}
+
+\Section{Control variates}
 
 CV is a well known variance reduction technique used in MC simulation. 
-It is ofen used when a 'simpler' version of the origin problem can be solved explicitly. In this section we briefly review the ideas and some results of this methods.
+It is ofen used when a 'simpler' version of the origin problem can be solved explicitly. In this section we briefly review the ideas and main results of the method.
  
 Suppose we want to solve the integration problem~\eqref{eq:setup} showed earlier, now we have a known function $h$ and its value on the interval
 $\int_{[0,1)^d} h(x)dx = \theta$.  We then construct a new estimator as the following 
-\[ \hat{I}_{cv}(f)=\frac{1}{n}\sum_{i=1}^{n}\Big[ f(X_i)-\beta_{mc}[h(X_i)-\theta] \Big] \quad s.t.\; X_i\sim \mathcal{U}[0,1), \; i.i.d.\]
+\[\ICV(f)=\frac{1}{n}\sum_{i=1}^{n}\Big[ f(X_i)-\BMC[h(X_i)-\theta] \Big] \quad s.t.\; X_i\sim \mathcal{U}[0,1), \; i.i.d.\]
 
-We can easily see it's an unbiased estimator, i.e. $\mathbb{E}(\hat{I}_{cv}) = I$.
-Now we want to pick the right $\beta_{mc}$ such that make the estimation more efficient.
-For simplicity, we consider single control variate in this case.
-Base on previous MC error estimating formula~\eqref{}, we know it's achievable by minimizing the variance of the estimator, which is 
+We can easily see it's an unbiased estimator, i.e. $\mathbb{E}(\ICV) = I$.
+Now the question is how should we give $\BMC$ and why is that.
+The idea is rather straitforward. 
+We know the mean square error of MC estimator is $\mathrm{Var}(\hat{I})+\mathrm{Bias}(\hat{I}^2$\cite{}. 
+CV method aims at efficiency improvment, so we need to reduce mean square error. 
+Since the estimator is unbiased, we only need to minimize its variance.
+Hence, the optimal $\BMC$ should be the one that minmize the variance of esimator.
+Here we give a simple derivation of optimal $\BMC$ for single CV.
+First, the variance of $\ICV$ is 
 \begin{align*}
-	\mathrm{Var}_{mc}(\hat{I}_{cv})
-    =&\mathrm{Var}\Big( \frac{1}{n}\sum_{i=1}^{n}\big[ f(X_i)-\beta_{mc}[h(X_i)-\theta] \big]\Big)\\
-    =&\frac{1}{n}\mathrm{Var}\Big(f(X_i)-\beta_{mc}[h(X_i)-\theta]\Big)\quad \text{by $X_i$ i.i.d} \\
-    =&\frac{1}{n}\mathbb{E}\Big(\big[f(X_i)-\beta_{mc}[h(X_i)-\theta]-I\big]^2 \Big) \\
-    =&\frac{1}{n}\mathbb{E}\Big(\big[ [f(X_i)-I] -\beta_{mc}[h(X_i)-\theta]\big]^2 \Big) \\
-    =&\frac{1}{n}\mathbb{E}\big([f(X_i)-I]^2-2\beta_{mc}[f(X_i)-I][h(X_i)-\theta]+\beta_{mc}^2[h(X_i)-\theta]^2 \Big)\\
-    =&\frac{1}{n}\Big(\mathrm{Var}[f(X_i)]-2\beta_{mc}\mathrm{Cov}[f(X_i),h(X_i)]+\beta_{mc}^2\mathrm{Var}[h(X_i)]\Big)\\
-=&\frac{1}{n}\Big(\mathrm{Var}[h(X_i)](\beta_{mc}-\frac{\mathrm{Cov}[f(X_i),h(X_i)]}{\mathrm{Var}[h(X_i)]})^2+\mathrm{Var}[f(X_i]-\frac{\mathrm{Cov}^2[f(X_i),h(X_i)]}{\mathrm{Var}[h(X_i)]} \Big)
-\end{align*}
-
-Then the optimal $\beta_{mc}$ is given by 
+	\mathrm{Var}(\ICV)
+    =&\mathrm{Var}\Big( \frac{1}{n}\sum_{i=1}^{n}\big[ f(X_i)-\BMC[h(X_i)-\theta] \big]\Big)\\
+    =&\frac{1}{n}\mathrm{Var}\Big(f(X_i)-\BMC[h(X_i)-\theta]\Big)\quad \text{by $X_i$ i.i.d} \\
+    =&\frac{1}{n}\mathbb{E}\Big(\big[f(X_i)-\BMC[h(X_i)-\theta]-I\big]^2 \Big) \\
+    =&\frac{1}{n}\mathbb{E}\Big(\big[ [f(X_i)-I] -\BMC[h(X_i)-\theta]\big]^2 \Big) \\
+    =&\frac{1}{n}\mathbb{E}\big([f(X_i)-I]^2-2\BMC[f(X_i)-I][h(X_i)-\theta]+\BMC^2[h(X_i)-\theta]^2 \Big)\\
+    =&\frac{1}{n}\Big(\mathrm{Var}[f(X_i)]-2\BMC\mathrm{Cov}[f(X_i),h(X_i)]+\BMC^2\mathrm{Var}[h(X_i)]\Big)\\
+    =&\frac{1}{n}\Big(\mathrm{Var}[h(X_i)](\BMC-\frac{\mathrm{Cov}[f(X_i),h(X_i)]}{\mathrm{Var}[h(X_i)]})^2+\\
+    &\quad \quad \mathrm{Var}[f(X_i]-\frac{\mathrm{Cov}^2[f(X_i),h(X_i)]}{\mathrm{Var}[h(X_i)]} \Big)
+\end{align*},
+then the optimal $\BMC$ is given by 
 \begin{equation}
-    \beta_{mc}^*=\frac{\mathrm{Cov}[f(X_i),h(X_i)]}{\mathrm{Var}[h(X_i)]}
+    \BMC^*=\frac{\mathrm{Cov}[f(X_i),h(X_i)]}{\mathrm{Var}[h(X_i)]}
     \label{eq:optBeta}
-\end{equation}
-
-In which case the variance become
+\end{equation}.
+In this case the variance become
 \[
-    \mathrm{Var}_{mc}(\hat{I}_{cv})= \frac{\mathrm{Var}[f(X_i)]}{n}\big(1-\mathrm{corr}^2[f(X_i), h(X_i)]\big) 
+    \mathrm{Var}(\ICV)= \frac{\mathrm{Var}[f(X_i)]}{n}\big(1-\mathrm{corr}^2[f(X_i), h(X_i)]\big) 
+\],
+and note we always have 
+\[
+\mathrm{Var}(\ICV) \leq \frac{\mathrm{Var}[f(X_i)]}{n}=\mathrm{Var}(\hat{I})
 \]
 
-and we always have 
-\[
-\mathrm{Var}_{mc}(\hat{I}_{cv}) \leq \frac{\mathrm{Var}[f(X_i)]}{n}=\mathrm{Var}_{mc}(\hat{I})
-\]
+Now we can see the merit of control variates as a variance reduction method. 
+In the worst case, we get a completely uncorrelated $g$ that leads correlation to zero, and we have variance exactly the same as not using control variates. On the other hand, the more correlated our control variates is to the target function, the more variance we can get rid of by using the method.
 
-Now we can see the merit of control variates as a variance reduction method.In worst case, we get a completely uncorrelated $g$ that leads correlation to zero, and we have variance exactly the same as not using control variates. On the other hand, the more correlated our control variates is to the target function, the more variance we can get rid of by using the method.
-
-\Section{Reliable Adaptive QMC with digital sequence}
+\Section{Reliable adaptive QMC with digital sequence}
 
 \Subsection{Idea of adaptive cubature algorithm}
 
@@ -82,7 +87,7 @@ The error of QMC method on digital sequence can be expressed in terms of Walsh c
     &\hat{I}_m(f): = \frac{1}{b^m}\sum_{i=0}^{b^m-1}f(z_i\oplus \Delta)\notag\\
     &\tilde{f}_{m,k}=\text{ discrete Walsh coefficients of }f \notag\\
     &a(r,m) =\text{ inflation factor that depends on } \mathcal{C} \notag
-\end{align}
+\end{align}.
 
 Here is the defination of the cone condition.
 \begin{align}
@@ -96,7 +101,9 @@ Here is the defination of the cone condition.
    &l^*\in \mathbb{N}\text{ be fixed }; \forall m\in \mathbb{N},\hat{\omega}(m),\mathring{\omega}(m)\geq 0, \text{ and } \lim_{m\to \infty} \hat{\omega}(m)=0,\; \lim_{m\to \infty} \mathring{\omega}(m)=0\notag
 \end{align}
 
-The first inequality($\bigcirc \leq \Diamond$) means the sum of the larger indexed Walsh coefficients bounds a partial sum of the same coeffcients. Take $l=0, m=12$ for example, in Figure~\ref{fg:cone} the the sum of circles should be bounded by some factor times the sum of diamonds. The second inequality($\Diamond\leq \Box$) requires the sum of the larger Walsh coefficients be bounded by the sum of smaller indexed Walsh coefficients. Take $l=8$ at this time, which means in Figure~\ref{fg:cone} the sum of diamonds should be bounded by some relax factor times the squares.
+The first inequality($\bigcirc \leq \Diamond$) means the sum of the larger indexed Walsh coefficients bounds a partial sum of the same coeffcients. 
+Take $l=0, m=12$ for example, in Figure~\ref{fg:cone} the the sum of circles should be bounded by some factor times the sum of diamonds. The second inequality($\Diamond\leq \Box$) requires the sum of the larger Walsh coefficients be bounded by the sum of smaller indexed Walsh coefficients. 
+Take $l=8$ at this time, which means in Figure~\ref{fg:cone} the sum of diamonds should be bounded by some relax factor times the squares.
 
 The cone give some meanings for the functions about how they should behave to get the err bound formula~\eqref{eq:errBound}. This means that $|\hat{f}_\kappa|$ does not dramatically bounce back as $\kappa$ goes to infinity. Note that in Figure~\ref{fg:cone} we call circles the err bound, this is proven to be true and under the cone conditions we can estimate it using discrete Walsh coefficients instead of true Walsh coefficients.
 \begin{figure}[h]

@@ -46,15 +46,13 @@
 \vspace {-10pt}
 \contentsline {section}{\makebox [0.3in][r]{4.1.} \hspace *{3pt}Accuracy}{15}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{4.2.} \hspace *{3pt}Efficiency}{15}
-\vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{4.3.} \hspace *{3pt}Barrier Option}{16}
+\contentsline {section}{\makebox [0.3in][r]{4.2.} \hspace *{3pt}Efficiency}{17}
 \vspace *{3pt}
-\contentsline {chapter}{\makebox [0.75in][r]{5.}\hspace *{3pt} \uppercase {Conclusion}}{19}
+\contentsline {chapter}{\makebox [0.75in][r]{5.}\hspace *{3pt} \uppercase {Conclusion}}{22}
 \vspace *{10pt}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{5.1.} \hspace *{3pt}Discussion}{19}
+\contentsline {section}{\makebox [0.3in][r]{5.1.} \hspace *{3pt}Discussion}{22}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{5.2.} \hspace *{3pt}Future work}{19}
+\contentsline {section}{\makebox [0.3in][r]{5.2.} \hspace *{3pt}Future work}{22}
 \vspace *{0pt}
-\contentsline {chapter}{\noindent BIBLIOGRAPHY}{20}
+\contentsline {chapter}{\noindent BIBLIOGRAPHY}{23}

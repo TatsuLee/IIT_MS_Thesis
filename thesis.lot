@@ -1,4 +1,6 @@
-\contentsline {table}{\numberline {4.1}{\ignorespaces Parameter Setup for Up and In Barrier Call Option}}{16}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Results of cubSobol, cv\_old and cv\_new with Asian Option}}{17}
-\contentsline {table}{\numberline {4.3}{\ignorespaces Parameter Setup for Up and In Barrier Call Option}}{17}
-\contentsline {table}{\numberline {4.4}{\ignorespaces Results of cubSobol, cv\_old and cv\_new with Barrier Option}}{18}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Parameter Setup for accuracy test}}{17}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Accuracy Test of reliable QMC algorithm}}{18}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Parameter Setup for efficienty test}}{19}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Efficiency test I of reliable QMC algorithm}}{19}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Efficiency test II of reliable QMC algorithm with Asian Option}}{20}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Results of cubSobol, cv\_old and cv\_new with Barrier Option}}{20}

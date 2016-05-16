@@ -1,22 +1,17 @@
 \Chapter{Introduction}
 
-\Section{What are we going to do?}
-
+\Subsection{The idea}
 Recently there are some great results from construction of Quasi Monte Carlo (QMC) methods that can adaptively choose a sample size for given error tolerances\cite{hickernell2014reliable}.   
 Our work is trying to combine reliable QMC methods with control variates. We will justify the theory behind it, construct a practical algorithm which can be implemented and tested through high dimensional integration examples.
-
-\Section{Why this is a good idea?} 
-
 Control Variates (CV) is a variance reduction technique for IID MC methods.
 QMC can be viewed as a deterministic version of IID MC, which outperforms MC for many integrals\cite{avramidis1996integrated}. 
 Naturally we wonder if QMC can also benefit from the CV technique. If that is possible, it can be especially useful for problems where we can easily find good control variates.
 
-\Section{What's the challenge?}
-
+\Subsection{The challenge}
 The challenge is that the optimal control variate coefficient for QMC is generally not the same as for simple Monte Carlo, as explained by Hickernell, Lemieux, and Owen\cite{hickernell2005control}. This requires us to figure out a right way to get the optimal coefficients for control variates with Quasi-Monte Carlo.
 
-\Section{Outline}
-
-In chapter 2 we first will briefly introduce Quasi-Monte Carlo rule and it's difference between Monte-Carlo. Then we will briefly talk about digital sequence and layout several concepts which will be used later. 
-Chapter 3 will show the derivations and theories of our methods along with the corresponding algorithm.
-In chapter 4 we will demonstrate results from several numerical experiments. We choose several option pricing problems for our target. For the final chapter we will discuss the results and future extension of the method.
+\Subsection{Outline}
+In chapter 2 we first briefly talk about QMC rule and it's difference between Monte-Carlo. 
+Then we introduce control variates and the reliable QMC algorithm that our work is based on. 
+In Chapter 3 we show the derivations and theories of our methods along with the corresponding algorithm.
+In chapter 4 we demonstrate results from several numerical experiments. We choose several option pricing problems for our target. For the final chapter we will discuss the results and possible extensions or improvemnts for the method.

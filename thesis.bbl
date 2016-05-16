@@ -22,6 +22,11 @@ G.~Fishman, {\em Monte Carlo: concepts, algorithms, and applications}.
 H.~Niederreiter, {\em Quasi-Monte Carlo Methods}.
 \newblock Wiley Online Library, 2010.
 
+\bibitem{kemna1990pricing}
+A.~G. Kemna and A.~Vorst, ``A pricing method for options based on average asset
+  values,'' {\em Journal of Banking \& Finance}, vol.~14, no.~1, pp.~113--129,
+  1990.
+
 \bibitem{owen2006warnock}
 A.~B. Owen, ``On the warnock-halton quasi-standard error,'' {\em Monte Carlo
   Methods and Applications mcma}, vol.~12, no.~1, pp.~47--54, 2006.
