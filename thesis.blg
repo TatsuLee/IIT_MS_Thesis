@@ -1,7 +1,6 @@
 This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
-A level-1 auxiliary file: symbol.aux
 A level-1 auxiliary file: abstract.aux
 A level-1 auxiliary file: chapter1.aux
 A level-1 auxiliary file: chapter2.aux
@@ -11,45 +10,45 @@ A level-1 auxiliary file: chapter5.aux
 The style file: ieeetr.bst
 Database file #1: ref.bib
 Warning--I didn't find a database entry for ""
-You've used 8 entries,
+You've used 13 entries,
             1876 wiz_defined-function locations,
-            534 strings with 4728 characters,
-and the built_in function-call counts, 1842 in all, are:
-= -- 189
-> -- 58
+            560 strings with 5405 characters,
+and the built_in function-call counts, 3076 in all, are:
+= -- 325
+> -- 86
 < -- 0
-+ -- 23
-- -- 15
-* -- 119
-:= -- 270
-add.period$ -- 10
-call.type$ -- 8
-change.case$ -- 6
++ -- 35
+- -- 22
+* -- 193
+:= -- 439
+add.period$ -- 17
+call.type$ -- 13
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 8
-duplicate$ -- 98
-empty$ -- 187
-format.name$ -- 15
-if$ -- 451
+cite$ -- 13
+duplicate$ -- 166
+empty$ -- 314
+format.name$ -- 22
+if$ -- 760
 int.to.chr$ -- 0
-int.to.str$ -- 8
-missing$ -- 10
-newline$ -- 29
-num.names$ -- 8
-pop$ -- 24
+int.to.str$ -- 13
+missing$ -- 15
+newline$ -- 46
+num.names$ -- 13
+pop$ -- 39
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 55
+skip$ -- 99
 stack$ -- 0
-substring$ -- 107
-swap$ -- 34
+substring$ -- 195
+swap$ -- 61
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 20
-width$ -- 9
-write$ -- 80
+while$ -- 34
+width$ -- 15
+write$ -- 131
 (There was 1 warning)

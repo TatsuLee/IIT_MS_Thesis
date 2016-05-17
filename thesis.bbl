@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{hickernell2014reliable}
 F.~J. Hickernell and L.~A.~J. Rugama, ``Reliable adaptive cubature using
@@ -22,10 +22,32 @@ G.~Fishman, {\em Monte Carlo: concepts, algorithms, and applications}.
 H.~Niederreiter, {\em Quasi-Monte Carlo Methods}.
 \newblock Wiley Online Library, 2010.
 
+\bibitem{dick2010digital}
+J.~Dick and F.~Pillichshammer, {\em Digital nets and sequences: Discrepancy
+  Theory and Quasi--Monte Carlo Integration}.
+\newblock Cambridge University Press, 2010.
+
+\bibitem{halton1960efficiency}
+J.~H. Halton, ``On the efficiency of certain quasi-random sequences of points
+  in evaluating multi-dimensional integrals,'' {\em Numerische Mathematik},
+  vol.~2, no.~1, pp.~84--90, 1960.
+
+\bibitem{l2005recent}
+P.~L’Ecuyer and C.~Lemieux, ``Recent advances in randomized quasi-monte carlo
+  methods,'' in {\em Modeling uncertainty}, pp.~419--474, Springer, 2005.
+
 \bibitem{kemna1990pricing}
 A.~G. Kemna and A.~Vorst, ``A pricing method for options based on average asset
   values,'' {\em Journal of Banking \& Finance}, vol.~14, no.~1, pp.~113--129,
   1990.
+
+\bibitem{boyle1977options}
+P.~P. Boyle, ``Options: A monte carlo approach,'' {\em Journal of financial
+  economics}, vol.~4, no.~3, pp.~323--338, 1977.
+
+\bibitem{lidebrandt2007variance}
+T.~Lidebrandt, {\em Variance reduction: Three approaches to control variates}.
+\newblock PhD thesis, Citeseer, 2007.
 
 \bibitem{owen2006warnock}
 A.~B. Owen, ``On the warnock-halton quasi-standard error,'' {\em Monte Carlo

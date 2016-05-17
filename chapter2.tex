@@ -16,17 +16,36 @@ Then we take sample of $n$ points $\{\mathbf{x_0},\dots, \mathbf{x_n}\}\in [0,1)
 \]
 
 However, there are several problems with IID MC method\cite{niederreiter2010quasi}.
-First, it is difficult to generate truly random samples. Second, error bound for IID MC works only probabilistic sense. 
+First, it is difficult to generate truly random samples. Second, error bound for IID MC works only in probabilistic sense. 
 Second, in many applications the convergence rate of MC is considered not fast enough. 
 
 Hence, QMC method were introduced to address these problems. 
 For QMC method the estimator is almost the same with MC. 
 The difference is that the sample points are taken from low discrepency sequence, which is determinsticlly chosen instead of random.   
-We will briefly rewiew one method for constructing such sequence that we used for our application in the next section. 
+We will briefly rewiew one realization such sequence that we used for implementation of our method. 
 
-\Section{Sobol squence}
+\newpage
 
+\Section{Sobol sequence}
 
+First is the definition for discrepancy \cite{dick2010digital}.
+Let $\mathscr{P} =\{x_0,\dots,x_{N −1}\}$ be a finite point set in $[0, 1)^s$.
+The extreme discrepancy $D_N$ of this point set is defined as:
+\[
+    D_N(\mathscr{P}) := \sup_{J}\Big| \frac{A(J, N)}{N}-\lambda_s(J)\Big|.
+\]
+where the supremum is extended over all sub-intervals $J \subseteq [0, 1)^s$ of the form $J=[\mathbf{a},\mathbf{b})$.
+It is a quantitative measure for the deviation of a finite point set from uniform distribution.
+The worst-case discrepancy is called the star-discrepancy and is defined as:
+\begin{align*}
+    D^*_N(\mathscr{P})&:=\sup_{x\in[0,1)^d}|\Delta_{\mathscr{P}}(x)|\\
+    \Delta_{\mathscr{P}}(x)&:=A([0,x),N,P)/N - \lambda_s([0,x)).
+\end{align*}
+The goal of a low-discrepancy sequence is to minimize this star discrepancy.
+Initially low-discrepancy sequences were not designed with digital arithmetic in mind. 
+The Van der Corput sequence \cite{halton1960efficiency} is an example of such sequences.
+Modern low-discrepancy sequences are called digital sequences \cite{l2005recent}. This is essentially because they are constructed using binary operations and are therefore well-suited to efficient implementations on computers.
+Sobol sequence was the first constructed digital sequences in base 2 in 1967 \cite{dick2010digital}.
 
 \Section{Control variates}
 
@@ -34,7 +53,8 @@ CV is a well known variance reduction technique used in MC simulation.
 It is ofen used when a 'simpler' version of the origin problem can be solved explicitly. In this section we briefly review the ideas and main results of the method.
  
 Suppose we want to solve the integration problem~\eqref{eq:setup} showed earlier, now we have a known function $h$ and its value on the interval
-$\int_{[0,1)^d} h(x)dx = \theta$.  We then construct a new estimator as the following 
+$\int_{[0,1)^d} h(x)dx = \theta$. 
+We then construct a new estimator as the following:
 \[\ICV(f)=\frac{1}{n}\sum_{i=1}^{n}\Big[ f(X_i)-\BMC[h(X_i)-\theta] \Big] \quad s.t.\; X_i\sim \mathcal{U}[0,1), \; i.i.d.\]
 
 We can easily see it's an unbiased estimator, i.e. $\mathbb{E}(\ICV) = I$.
@@ -45,7 +65,7 @@ CV method aims at efficiency improvment, so we need to reduce mean square error.
 Since the estimator is unbiased, we only need to minimize its variance.
 Hence, the optimal $\BMC$ should be the one that minmize the variance of esimator.
 Here we give a simple derivation of optimal $\BMC$ for single CV.
-First, the variance of $\ICV$ is 
+First, the variance of $\ICV$ is: 
 \begin{align*}
 	\mathrm{Var}(\ICV)
     =&\mathrm{Var}\Big( \frac{1}{n}\sum_{i=1}^{n}\big[ f(X_i)-\BMC[h(X_i)-\theta] \big]\Big)\\
@@ -55,20 +75,20 @@ First, the variance of $\ICV$ is
     =&\frac{1}{n}\mathbb{E}\big([f(X_i)-I]^2-2\BMC[f(X_i)-I][h(X_i)-\theta]+\BMC^2[h(X_i)-\theta]^2 \Big)\\
     =&\frac{1}{n}\Big(\mathrm{Var}[f(X_i)]-2\BMC\mathrm{Cov}[f(X_i),h(X_i)]+\BMC^2\mathrm{Var}[h(X_i)]\Big)\\
     =&\frac{1}{n}\Big(\mathrm{Var}[h(X_i)](\BMC-\frac{\mathrm{Cov}[f(X_i),h(X_i)]}{\mathrm{Var}[h(X_i)]})^2+\\
-    &\quad \quad \mathrm{Var}[f(X_i]-\frac{\mathrm{Cov}^2[f(X_i),h(X_i)]}{\mathrm{Var}[h(X_i)]} \Big)
-\end{align*},
-then the optimal $\BMC$ is given by 
+    &\quad \quad \mathrm{Var}[f(X_i]-\frac{\mathrm{Cov}^2[f(X_i),h(X_i)]}{\mathrm{Var}[h(X_i)]} \Big),
+\end{align*}
+then the optimal $\BMC$ is given by: 
 \begin{equation}
-    \BMC^*=\frac{\mathrm{Cov}[f(X_i),h(X_i)]}{\mathrm{Var}[h(X_i)]}
+    \BMC^*=\frac{\mathrm{Cov}[f(X_i),h(X_i)]}{\mathrm{Var}[h(X_i)]}.
     \label{eq:optBeta}
-\end{equation}.
-In this case the variance become
+\end{equation}
+In this case the variance become:
 \[
-    \mathrm{Var}(\ICV)= \frac{\mathrm{Var}[f(X_i)]}{n}\big(1-\mathrm{corr}^2[f(X_i), h(X_i)]\big) 
-\],
-and note we always have 
+    \mathrm{Var}(\ICV)= \frac{\mathrm{Var}[f(X_i)]}{n}\big(1-\mathrm{corr}^2[f(X_i), h(X_i)]\big),
+\]
+and note we always have: 
 \[
-\mathrm{Var}(\ICV) \leq \frac{\mathrm{Var}[f(X_i)]}{n}=\mathrm{Var}(\hat{I})
+\mathrm{Var}(\ICV) \leq \frac{\mathrm{Var}[f(X_i)]}{n}=\mathrm{Var}(\hat{I}).
 \]
 
 Now we can see the merit of control variates as a variance reduction method. 
@@ -86,10 +106,9 @@ The error of QMC method on digital sequence can be expressed in terms of Walsh c
     &\text{ if } f \in \mathscr{C}\text{ then } \Big|\int_{[0,1)^d}f(x)dx - \hat{I}_m(f)\Big| \leq a(r,m) \sum_{\lfloor 2^{m-r-1} \rfloor}^{2^{m-r}-1} |\tilde{f}_{m,k}|\\
     &\hat{I}_m(f): = \frac{1}{b^m}\sum_{i=0}^{b^m-1}f(z_i\oplus \Delta)\notag\\
     &\tilde{f}_{m,k}=\text{ discrete Walsh coefficients of }f \notag\\
-    &a(r,m) =\text{ inflation factor that depends on } \mathcal{C} \notag
-\end{align}.
-
-Here is the defination of the cone condition.
+    &a(r,m) =\text{ inflation factor that depends on } \mathscr{C} \notag.
+\end{align}
+Here is the defination of the cone condition:
 \begin{align}
    &\mathscr{C}:=\Big\{f\in L^2[0,1)^d:\;\bigcirc \leq \hat{\omega}(m-l)\Diamond,\; l\leq m;\quad
    \Diamond \leq \mathring{\omega}(m-l) \Box, 
@@ -98,7 +117,7 @@ Here is the defination of the cone condition.
    &\bigcirc:= \sum_{\kappa=\lfloor b^{l-1} \rfloor}^{b^l-1} \sum_{\lambda=1}^{\infty}| \hat{f}_{\kappa+\lambda b^m}|,\quad  
    \Box:= \sum_{\kappa=b^{l-1}}^{b^l-1}|\hat{f}_\kappa|,\quad
    \Diamond:=\sum_{\kappa=b^m}^{\infty}|\hat{f}_{\kappa}|\\
-   &l^*\in \mathbb{N}\text{ be fixed }; \forall m\in \mathbb{N},\hat{\omega}(m),\mathring{\omega}(m)\geq 0, \text{ and } \lim_{m\to \infty} \hat{\omega}(m)=0,\; \lim_{m\to \infty} \mathring{\omega}(m)=0\notag
+   &l^*\in \mathbb{N}\text{ be fixed }; \forall m\in \mathbb{N},\hat{\omega}(m),\mathring{\omega}(m)\geq 0, \text{ and } \lim_{m\to \infty} \hat{\omega}(m)=0,\; \lim_{m\to \infty} \mathring{\omega}(m)=0\notag.
 \end{align}
 
 The first inequality($\bigcirc \leq \Diamond$) means the sum of the larger indexed Walsh coefficients bounds a partial sum of the same coeffcients. 

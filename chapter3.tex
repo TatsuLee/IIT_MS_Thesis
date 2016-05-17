@@ -16,7 +16,7 @@ Then easily we can find that if we replace $f$ with $g$, the integration stays t
         =\int_{[0,1)^d}f-(\boldsymbol{h}-\boldsymbol{\theta})\boldsymbol{\beta}dx
 			=\int_{[0,1)^d}fdx.
 \]
-Now we wonder if one can still use the same method as MC, the answer is no and the reason is in the next section. 
+Now we wonder if we can still use the same method as MC, the answer is no and the reason is in the next section. 
 
 \Section{The problem of CV with random QMC}
 
@@ -58,15 +58,15 @@ Now we are interested that if our previous formula for $\hat{\beta}_{mc}$ could 
     \mathrm{Cov}(\hat{I}, \hat{H})=&\int [f(X_1)+\dots+f(X_n)][h(X_1)+\dots+h(X_n)]\; d\mathbf{X}\\
     =&\int [\sum_{i=1}^{n}f(X_i)h(X_i) + \sum_{i,j=1}^{i\neq j}f(X_i)h(X_j)]\; d\mathbf{X}\\
     \neq&\int f(X_i)h(X_i)dX_i\\
-    =&\mathrm{Cov}x[(f(X_i),h(X_i)]
+    =&\mathrm{Cov}[(f(X_i),h(X_i)].
 \end{align*}
-There is also a very good example from Hicknell and Lemieux(2005)\cite{hickernell2005control}'s paper, showing that $\beta_{mc}$ and $\beta_{qmc}$ can make a quite different results in some cases. 
+There is also a very good example from Hickernell and Lemieux(2005)\cite{hickernell2005control}'s paper, showing that $\beta_{mc}$ and $\beta_{qmc}$ can make a quite different results in some cases. 
 
 
 \Section{A new way to find $\beta$} 
 
-As we stated in previous section, we can not find optimal $\beta$ by minimizing variance of estimator like Monte-Carlo. 
-However, if using the guaranteed adaptive QMC method introduced in chapter 2, we may have another way to find $\beta$.
+As we stated in previous section, we can not find optimal $\beta$ by minimizing variance of estimator like MC. 
+However, if using the reliable adaptive QMC method introduced in chapter 2, we may have another way to find $\beta$.
 
 Recall equation~\eqref{eq:errBound} the error bound for new estimator of $g$ still holds
 \begin{equation}\label{eq:qmccvErr}
@@ -95,7 +95,7 @@ From~\eqref{eq:qmccvErr} it is clear that the optimal $\beta$ is the one that mi
     &\approx\min_{\boldsymbol{\beta}}\|\hat{\boldsymbol{f}}-\hat{\boldsymbol{H}}\boldsymbol{\beta}\|_2
     && \hat{\boldsymbol{H}}= (\hat{\boldsymbol{H}}_1, \dots, \hat{\boldsymbol{H}}_J)\\
     & \notag 
-    &&\hat{\boldsymbol{H}_j}=(\hat{h}_{b^{m-r-1},j}-\hat{\theta}_j,\dots, \hat{h}_{b^{m-r}-1,j}-\hat{\theta}_j)^T
+    &&\hat{\boldsymbol{H}_j}=(\hat{h}_{b^{m-r-1},j}-\hat{\theta}_j,\dots, \hat{h}_{b^{m-r}-1,j}-\hat{\theta}_j)^T.
 \end{align}
 
 The second equivalence is not hard to get, but the third one may not be so obvious. Let's consider it backwards. Suppose we have a vector A and it's $\mathcal{L}_1$-norm.
@@ -153,27 +153,24 @@ After organize it the in format of~\eqref{eq:estcvnew}, $\theta$ is eliminated f
 
 \Section{The modified method}
 
-Now we make the following changes 
+Now we make the following changes:
 \begin{align*}
     g&=f-\beta h\\ 
-    \hat{I}_m({g})&= \frac{1}{b^m}\sum_{i=0}^{b^m-1}g(z_i+\Delta)
+    \hat{I}_m({g})&= \frac{1}{b^m}\sum_{i=0}^{b^m-1}g(z_i+\Delta).
 \end{align*}
-
-And we have the following equivalence 
+And we have the following equivalence:
 \begin{align*}
     \int_{[0,1)^d}fdx &= \int_{[0,1)^d}gdx +\theta\beta\\ 
-    \hat{I}_m(f) &= \hat{I}_m(g)+\theta\beta
+    \hat{I}_m(f) &= \hat{I}_m(g)+\theta\beta.
 \end{align*}
-
-So the estimation error becomes 
+So the estimation error becomes:
 \[
 \Big| \int_{[0,1)^d}fdx- \hat{I}_m(f) \Big|
-    =\Big| \int_{[0,1)^d}gdx- \hat{I}_m(g) \Big|
+    =\Big| \int_{[0,1)^d}gdx- \hat{I}_m(g) \Big|.
 \]
-
-Here if our $g$ is in the cone we introduced earlier~\eqref{eq:cone}, then we can use the results from Hickernell and Jiménez Rugama(2014)\cite{hickernell2014reliable}, the error is bounded by
+Here if our $g$ is in the cone we introduced earlier~\eqref{eq:cone}, then we can use the results from Hickernell and Jiménez Rugama(2014)\cite{hickernell2014reliable}, the error is bounded by:
 \[
-\Big|\int_{[0,1)^d}gdx - \hat{I}_m(g)\Big| \leq a(r,m) \sum_{\lfloor 2^{m-r-1} \rfloor}^{2^{m-r}-1} |\tilde{g}_{m,k}|
+\Big|\int_{[0,1)^d}gdx - \hat{I}_m(g)\Big| \leq a(r,m) \sum_{\lfloor 2^{m-r-1} \rfloor}^{2^{m-r}-1} |\tilde{g}_{m,k}|.
 \]
 This leads to the same algorithm suggested by Hickernell and Jiménez Rugama(2014)\cite{hickernell2014reliable}, but since we are using control variates, several modifications have to be made.
 
@@ -215,10 +212,9 @@ using digital sequence.
 \caption{Reliable Adaptive QMC with control variates}\label{alg:qmccv}
 \end{algorithm}
 
-Note that for generating kappa map, i.e. step~\ref{alg:alg1kappa}in Algorithm~\ref{alg:qmccv}, we used an explicit way to generate it.   
-
-Another importent point need to be mentioned is that in our algorithm, we used an iterative way, which may require recalculating $beta$ each time m increment.
-
+Note that for generating kappa map, i.e. step~\ref{alg:alg1kappaFWT} in Algorithm~\ref{alg:qmccv}, we used an explicit way to generate it.   
+One can find the details for that in appendix from Hickernell and Llu{\'\i}s(2014) \cite{hickernell2014reliable}. Here we reorganize it and show it in algorithm ~\ref{alg:kappaFWT}.
+Another important point need to be mentioned is that in our algorithm, we used an iterative way, which may require recalculating $beta$ for each iteration.
 \begin{algorithm}
 \DontPrintSemicolon
 \KwData{function $f$; $\mathit{Y}_v^{(m)}$ ; $m \in \mathbb{N}_0$} 
@@ -234,9 +230,12 @@ Another importent point need to be mentioned is that in our algorithm, we used a
 }
 \caption{kappa map and discrete Walsh coeffcients}\label{alg:kappaFWT}
 \end{algorithm}
+
 \iffalse
 \Section{When beta is not accurate?}
 
-Note that in algorthm~\ref{alg:qmccv}, we didn't recalculate $\beta$ for every iteration. The reason is that for most functions this is not neccesary, but in certain case $\beta$ need to be updated to get the right answer. Here is an example showing that for certain strange functions beta needs to be updated. 
+Note that in algorthm~\ref{alg:qmccv}, we didn't recalculate $\beta$ for every iteration. 
+The reason is that for most functions this is not neccesary, but in certain case $\beta$ need to be updated to get the right answer. 
+Here is an example showing that for certain strange functions beta needs to be updated. 
 
 \fi

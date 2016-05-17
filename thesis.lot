@@ -1,6 +1,6 @@
-\contentsline {table}{\numberline {4.1}{\ignorespaces Parameter Setup for accuracy test}}{17}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Accuracy Test of reliable QMC algorithm}}{18}
-\contentsline {table}{\numberline {4.3}{\ignorespaces Parameter Setup for efficienty test}}{19}
-\contentsline {table}{\numberline {4.4}{\ignorespaces Efficiency test I of reliable QMC algorithm}}{19}
-\contentsline {table}{\numberline {4.5}{\ignorespaces Efficiency test II of reliable QMC algorithm with Asian Option}}{20}
-\contentsline {table}{\numberline {4.6}{\ignorespaces Results of cubSobol, cv\_old and cv\_new with Barrier Option}}{20}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Parameter Setup for accuracy test}}{18}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Accuracy Test of RAQMC\_CV algorithm}}{19}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Parameter Setup for efficienty test}}{20}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Efficiency test I of RAQMC\_CV}}{20}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Efficiency test II of RAQMC\_CV algorithm with Asian Option}}{21}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Efficiency test II of RAQMC\_CV algorithm with Barrier Option}}{22}
