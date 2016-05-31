@@ -3,7 +3,7 @@
 
 Numerical integration problems are involved in fields such as physics, mathematical finance, biology, computer graphics, and many others fields. 
 It usually happens when it is hard to solve some integral analytically. Therefore, one has to use numerical methods for such problems.  
-MC method is the general way to solve problems in such case\cite{fishman2013monte}. The method can be simply explained in the following way. 
+MC method is a general way to solve problems in such case\cite{fishman2013monte}. The method can be simply explained in the following way. 
 
 Suppose we have the following standard integration approximation problem whose format is: 
 \begin{equation}
@@ -17,35 +17,61 @@ Then we take sample of $n$ points $\{\mathbf{x_0},\dots, \mathbf{x_n}\}\in [0,1)
 
 However, there are several problems with IID MC method\cite{niederreiter2010quasi}.
 First, it is difficult to generate truly random samples. Second, error bound for IID MC works only in probabilistic sense. 
-Second, in many applications the convergence rate of MC is considered not fast enough. 
+Last, in many applications the convergence rate of MC is considered not fast enough. 
 
 Hence, QMC method were introduced to address these problems. 
 For QMC method the estimator is almost the same with MC. 
 The difference is that the sample points are taken from low discrepency sequence, which is determinsticlly chosen instead of random.   
-We will briefly rewiew one realization such sequence that we used for implementation of our method. 
+We will briefly rewiew one type of such sequence that we used for implementation of our method. 
 
 \newpage
 
 \Section{Sobol sequence}
 
-First is the definition for discrepancy \cite{dick2010digital}.
-Let $\mathscr{P} =\{x_0,\dots,x_{N −1}\}$ be a finite point set in $[0, 1)^s$.
+Like we mentioned earlier, for QMC we do not use random points, so the question become how to choose such points?  
+Naturally, in order to make good approximation we want the error to go to $0$ as sample size $N$ increases, which is:
+\[
+    \lim_{N\to\infty}\frac{1}{N}\sum_{n=0}^{N-1}f(x_n)=\int_{[0,1]^s}f(x)dx.
+\]
+A sequence $\mathcal{S}=(x_n)_{n\geq0}$ satisfies the above for all Riemann intregrable function $f$ is called uniformly distributed modulo one. 
+That is the kind of sequence from which we should draw our sample points to approximate the integral. 
+However, in practice we can use only finite set of points and a finite sequence can never be uniformly distributed modulo one.
+Thus, we introduce some quantitative measure for the deviation of a finite point set from uniform distribution. Such measures are called discrepancies.\cite{dick2010digital}.
+
+\theoremstyle{definition}
+\begin{definition}{}
+Let $\mathscr{P} =\{x_0,\dots,x_{N−1}\}$ be a finite point set in $[0, 1)^s$.
 The extreme discrepancy $D_N$ of this point set is defined as:
 \[
     D_N(\mathscr{P}) := \sup_{J}\Big| \frac{A(J, N)}{N}-\lambda_s(J)\Big|.
 \]
+\end{definition}
 where the supremum is extended over all sub-intervals $J \subseteq [0, 1)^s$ of the form $J=[\mathbf{a},\mathbf{b})$.
 It is a quantitative measure for the deviation of a finite point set from uniform distribution.
-The worst-case discrepancy is called the star-discrepancy and is defined as:
+It is proven that a sequence $\mathcal{S}$ is uniformly distributed modulo one, if and only if $\lim_{N\to\infty} D_ N(S) = 0$
+But ofen we use a weaker version of extreme discrepancy called the star-discrepancy and is defined as:
 \begin{align*}
     D^*_N(\mathscr{P})&:=\sup_{x\in[0,1)^d}|\Delta_{\mathscr{P}}(x)|\\
     \Delta_{\mathscr{P}}(x)&:=A([0,x),N,P)/N - \lambda_s([0,x)).
 \end{align*}
-The goal of a low-discrepancy sequence is to minimize this star discrepancy.
+Hence our goal is to find sequences of which this star discrepanc are minimized.
 Initially low-discrepancy sequences were not designed with digital arithmetic in mind. 
 The Van der Corput sequence \cite{halton1960efficiency} is an example of such sequences.
 Modern low-discrepancy sequences are called digital sequences \cite{l2005recent}. This is essentially because they are constructed using binary operations and are therefore well-suited to efficient implementations on computers.
+
 Sobol sequence was the first constructed digital sequences in base 2 in 1967 \cite{dick2010digital}.
+Figure~\ref{fg:sobol} shows a comparision between random and sobol points. The latter looks more evenly scattered. Infact if we draw a $16x16$ grid in the plot, for each grid there is exactly only 1 points in it.   
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{.5\textwidth}
+    \includegraphics[width=\textwidth]{figures/cvSobolPlot1.eps}
+    \caption{256 random generated points}
+    \end{subfigure}~\begin{subfigure}[b]{.5\textwidth}
+    \includegraphics[width=\textwidth]{figures/cvSobolPlot2.eps}
+    \caption{256 sobol points}
+    \end{subfigure}
+    \caption{Comparision between MC and QMC sample points}\label{fg:sobol}
+\end{figure}
 
 \Section{Control variates}
 
@@ -98,7 +124,7 @@ In the worst case, we get a completely uncorrelated $g$ that leads correlation t
 
 \Subsection{Idea of adaptive cubature algorithm}
 
-One practical problem for QMC method is that how to get the sample size big enough for a required error tolerance. The idea in work of Hickernell and Jiménez Rugama(2014)\cite{hickernell2014reliable} is to construct a QMC algorithm with reliable error estimation on digital sequence. Here we briefly summarize their results.
+One practical problem for QMC method is that how to get the sample size big enough for a required error tolerance. The idea in work of Hickernell and Llu{\'\i}s (2014)\cite{hickernell2014reliable} is to construct a QMC algorithm with reliable error estimation on digital sequence. Here we briefly summarize their results.
 
 The error of QMC method on digital sequence can be expressed in terms of Walsh coefficients of the integrand on certain cone conditions. 
 \begin{align}
@@ -121,10 +147,12 @@ Here is the defination of the cone condition:
 \end{align}
 
 The first inequality($\bigcirc \leq \Diamond$) means the sum of the larger indexed Walsh coefficients bounds a partial sum of the same coeffcients. 
-Take $l=0, m=12$ for example, in Figure~\ref{fg:cone} the the sum of circles should be bounded by some factor times the sum of diamonds. The second inequality($\Diamond\leq \Box$) requires the sum of the larger Walsh coefficients be bounded by the sum of smaller indexed Walsh coefficients. 
+Take $l=0, m=12$ for example, in Figure~\ref{fg:cone} the sum of circles should be bounded by some factor times the sum of diamonds. The second inequality($\Diamond\leq \Box$) requires the sum of the larger Walsh coefficients be bounded by the sum of smaller indexed Walsh coefficients. 
 Take $l=8$ at this time, which means in Figure~\ref{fg:cone} the sum of diamonds should be bounded by some relax factor times the squares.
 
-The cone give some meanings for the functions about how they should behave to get the err bound formula~\eqref{eq:errBound}. This means that $|\hat{f}_\kappa|$ does not dramatically bounce back as $\kappa$ goes to infinity. Note that in Figure~\ref{fg:cone} we call circles the err bound, this is proven to be true and under the cone conditions we can estimate it using discrete Walsh coefficients instead of true Walsh coefficients.
+The cone gives some meanings for the functions about how they should behave to get the error bound formula~\eqref{eq:errBound}. 
+This means that $|\hat{f}_\kappa|$ does not dramatically bounce back as $\kappa$ goes to infinity. 
+Note that in Figure~\ref{fg:cone} we call circles the err bound, this is proven to be true and under the cone conditions we can estimate it using discrete Walsh coefficients instead of true Walsh coefficients.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{figures/cone.eps}

@@ -12,20 +12,21 @@
 \usepackage[dvips]{graphicx}    % This package is used for Figures
 \usepackage{rotating}           % This package is used for landscape mode.
 \usepackage{float}
-\usepackage{epsfig}
-\usepackage{subfigure}          % These two packages, epsfig and subfigure, are used for creating subplots.
-% Packages are explained in the Help document.
 \usepackage{colortbl}
 \usepackage{booktabs}
 \usepackage{mathrsfs}
 \usepackage{amsmath, amsthm, amsfonts}
 \usepackage[ruled, vlined]{algorithm2e}
 \usepackage{cite}
+\usepackage{subcaption}
 
 %% Define some new commands
 \newcommand{\ICV}{\hat{I}_{\mathrm{CV}}}
 \newcommand{\BMC}{\beta_{\mathrm{MC}}}
 \newcommand{\BQMC}{\beta_{\mathrm{QMC}}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 
 \begin{document}
 
@@ -61,7 +62,7 @@
 %List of Symbols(optional)
 %\include{symbol}
 
-
+ 
 \include{abstract}
 
 \textpages     % Settings of text-pages are done with \textpages command

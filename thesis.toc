@@ -18,37 +18,37 @@
 \vspace {-10pt}
 \contentsline {section}{\makebox [0.3in][r]{2.2.} \hspace *{3pt}Sobol sequence}{4}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{2.3.} \hspace *{3pt}Control variates}{4}
+\contentsline {section}{\makebox [0.3in][r]{2.3.} \hspace *{3pt}Control variates}{5}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{2.4.} \hspace *{3pt}Reliable adaptive QMC with digital sequence}{6}
+\contentsline {section}{\makebox [0.3in][r]{2.4.} \hspace *{3pt}Reliable adaptive QMC with digital sequence}{7}
 \vspace *{3pt}
-\contentsline {chapter}{\makebox [0.75in][r]{3.}\hspace *{3pt} \uppercase {Reliable adaptive QMC with CV}}{9}
+\contentsline {chapter}{\makebox [0.75in][r]{3.}\hspace *{3pt} \uppercase {Reliable adaptive QMC with CV}}{10}
 \vspace *{10pt}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.1.} \hspace *{3pt}Idea to add control variates to reliable adaptive QMC}{9}
+\contentsline {section}{\makebox [0.3in][r]{3.1.} \hspace *{3pt}Idea to add control variates to reliable adaptive QMC}{10}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.2.} \hspace *{3pt}The problem of CV with random QMC}{9}
+\contentsline {section}{\makebox [0.3in][r]{3.2.} \hspace *{3pt}The problem of CV with random QMC}{10}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.3.} \hspace *{3pt}A new way to find $\beta $}{10}
+\contentsline {section}{\makebox [0.3in][r]{3.3.} \hspace *{3pt}A new way to find $\beta $}{11}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.4.} \hspace *{3pt}The problem with $\theta $}{12}
+\contentsline {section}{\makebox [0.3in][r]{3.4.} \hspace *{3pt}The problem with $\theta $}{13}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.5.} \hspace *{3pt}The modified method}{13}
+\contentsline {section}{\makebox [0.3in][r]{3.5.} \hspace *{3pt}The modified method}{14}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.6.} \hspace *{3pt}The Algorithm}{14}
+\contentsline {section}{\makebox [0.3in][r]{3.6.} \hspace *{3pt}The Algorithm}{15}
 \vspace *{3pt}
-\contentsline {chapter}{\makebox [0.75in][r]{4.}\hspace *{3pt} \uppercase {Numerical Experiment}}{16}
+\contentsline {chapter}{\makebox [0.75in][r]{4.}\hspace *{3pt} \uppercase {Numerical Experiment}}{17}
 \vspace *{10pt}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{4.1.} \hspace *{3pt}Accuracy}{16}
+\contentsline {section}{\makebox [0.3in][r]{4.1.} \hspace *{3pt}Accuracy}{17}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{4.2.} \hspace *{3pt}Efficiency}{18}
+\contentsline {section}{\makebox [0.3in][r]{4.2.} \hspace *{3pt}Efficiency}{19}
 \vspace *{3pt}
-\contentsline {chapter}{\makebox [0.75in][r]{5.}\hspace *{3pt} \uppercase {Conclusion}}{23}
+\contentsline {chapter}{\makebox [0.75in][r]{5.}\hspace *{3pt} \uppercase {Conclusion}}{25}
 \vspace *{10pt}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{5.1.} \hspace *{3pt}Discussion}{23}
+\contentsline {section}{\makebox [0.3in][r]{5.1.} \hspace *{3pt}Discussion}{25}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{5.2.} \hspace *{3pt}Future work}{23}
+\contentsline {section}{\makebox [0.3in][r]{5.2.} \hspace *{3pt}Future work}{25}
 \vspace *{0pt}
-\contentsline {chapter}{\noindent BIBLIOGRAPHY}{24}
+\contentsline {chapter}{\noindent BIBLIOGRAPHY}{27}
