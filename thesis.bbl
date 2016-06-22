@@ -27,15 +27,6 @@ J.~Dick and F.~Pillichshammer, {\em Digital nets and sequences: Discrepancy
   Theory and Quasi--Monte Carlo Integration}.
 \newblock Cambridge University Press, 2010.
 
-\bibitem{halton1960efficiency}
-J.~H. Halton, ``On the efficiency of certain quasi-random sequences of points
-  in evaluating multi-dimensional integrals,'' {\em Numerische Mathematik},
-  vol.~2, no.~1, pp.~84--90, 1960.
-
-\bibitem{l2005recent}
-P.~L’Ecuyer and C.~Lemieux, ``Recent advances in randomized quasi-monte carlo
-  methods,'' in {\em Modeling uncertainty}, pp.~419--474, Springer, 2005.
-
 \bibitem{owen2006warnock}
 A.~B. Owen, ``On the warnock-halton quasi-standard error,'' {\em Monte Carlo
   Methods and Applications mcma}, vol.~12, no.~1, pp.~47--54, 2006.
@@ -52,6 +43,20 @@ P.~P. Boyle, ``Options: A monte carlo approach,'' {\em Journal of financial
 \bibitem{lidebrandt2007variance}
 T.~Lidebrandt, {\em Variance reduction: Three approaches to control variates}.
 \newblock PhD thesis, Citeseer, 2007.
+
+\bibitem{genz1992numerical}
+A.~Genz, ``Numerical computation of multivariate normal probabilities,'' {\em
+  Journal of computational and graphical statistics}, vol.~1, no.~2,
+  pp.~141--149, 1992.
+
+\bibitem{drezner1978computation}
+Z.~Drezner, ``Computation of the bivariate normal integral,'' {\em Mathematics
+  of Computation}, pp.~277--279, 1978.
+
+\bibitem{genz2004numerical}
+A.~Genz, ``Numerical computation of rectangular bivariate and trivariate normal
+  and t probabilities,'' {\em Statistics and Computing}, vol.~14, no.~3,
+  pp.~251--260, 2004.
 
 \bibitem{rugama2014adaptive}
 L.~A.~J. Rugama and F.~J. Hickernell, ``Adaptive multidimensional integration
