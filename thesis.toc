@@ -11,44 +11,44 @@
 \contentsline {section}{\makebox [0.3in][r]{1.3.} \hspace *{3pt}Outline}{1}
 \noindent CHAPTER \vspace {-10pt}
 \vspace *{3pt}
-\contentsline {chapter}{\makebox [0.75in][r]{2.}\hspace *{3pt} \uppercase {Background}}{2}
+\contentsline {chapter}{\makebox [0.75in][r]{2.}\hspace *{3pt} \uppercase {Background}}{3}
 \vspace *{10pt}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{2.1.} \hspace *{3pt}Problem setup}{2}
+\contentsline {section}{\makebox [0.3in][r]{2.1.} \hspace *{3pt}Problem setup}{3}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{2.2.} \hspace *{3pt}Sobol sequence}{3}
+\contentsline {section}{\makebox [0.3in][r]{2.2.} \hspace *{3pt}Sobol sequence}{4}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{2.3.} \hspace *{3pt}Control variates}{4}
+\contentsline {section}{\makebox [0.3in][r]{2.3.} \hspace *{3pt}Control variates}{5}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{2.4.} \hspace *{3pt}Reliable adaptive QMC with digital sequence}{6}
+\contentsline {section}{\makebox [0.3in][r]{2.4.} \hspace *{3pt}Reliable adaptive QMC with digital sequence}{7}
 \vspace *{3pt}
-\contentsline {chapter}{\makebox [0.75in][r]{3.}\hspace *{3pt} \uppercase {Reliable adaptive QMC with CV}}{9}
+\contentsline {chapter}{\makebox [0.75in][r]{3.}\hspace *{3pt} \uppercase {Reliable adaptive QMC with CV}}{10}
 \vspace *{10pt}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.1.} \hspace *{3pt}Idea to add control variates to reliable adaptive QMC}{9}
+\contentsline {section}{\makebox [0.3in][r]{3.1.} \hspace *{3pt}Idea to add control variates to reliable adaptive QMC}{10}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.2.} \hspace *{3pt}The problem of CV with random QMC}{9}
+\contentsline {section}{\makebox [0.3in][r]{3.2.} \hspace *{3pt}The problem of CV with randomized QMC}{10}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.3.} \hspace *{3pt}A new way to find $\beta $}{10}
+\contentsline {section}{\makebox [0.3in][r]{3.3.} \hspace *{3pt}A new way to find $\beta $}{11}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.4.} \hspace *{3pt}The problem with $\theta $}{12}
+\contentsline {section}{\makebox [0.3in][r]{3.4.} \hspace *{3pt}The problem with $\theta $}{13}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.5.} \hspace *{3pt}The modified method}{13}
+\contentsline {section}{\makebox [0.3in][r]{3.5.} \hspace *{3pt}The modified method}{14}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.6.} \hspace *{3pt}The Algorithm}{14}
+\contentsline {section}{\makebox [0.3in][r]{3.6.} \hspace *{3pt}The Algorithm}{15}
 \vspace *{3pt}
-\contentsline {chapter}{\makebox [0.75in][r]{4.}\hspace *{3pt} \uppercase {Numerical Experiment}}{16}
+\contentsline {chapter}{\makebox [0.75in][r]{4.}\hspace *{3pt} \uppercase {Numerical Experiment}}{17}
 \vspace *{10pt}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{4.1.} \hspace *{3pt}Option Pricing}{16}
+\contentsline {section}{\makebox [0.3in][r]{4.1.} \hspace *{3pt}Option Pricing}{17}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{4.2.} \hspace *{3pt}Multivariate normal probabilities}{24}
+\contentsline {section}{\makebox [0.3in][r]{4.2.} \hspace *{3pt}Multivariate normal probabilities}{25}
 \vspace *{3pt}
-\contentsline {chapter}{\makebox [0.75in][r]{5.}\hspace *{3pt} \uppercase {Conclusion}}{27}
+\contentsline {chapter}{\makebox [0.75in][r]{5.}\hspace *{3pt} \uppercase {Conclusion}}{28}
 \vspace *{10pt}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{5.1.} \hspace *{3pt}Discussion}{27}
+\contentsline {section}{\makebox [0.3in][r]{5.1.} \hspace *{3pt}Discussion}{28}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{5.2.} \hspace *{3pt}Future work}{28}
+\contentsline {section}{\makebox [0.3in][r]{5.2.} \hspace *{3pt}Future work}{29}
 \vspace *{0pt}
-\contentsline {chapter}{\noindent BIBLIOGRAPHY}{29}
+\contentsline {chapter}{\noindent BIBLIOGRAPHY}{30}

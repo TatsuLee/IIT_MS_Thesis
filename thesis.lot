@@ -1,7 +1,7 @@
-\contentsline {table}{\numberline {4.1}{\ignorespaces Parameter Setup for accuracy test\relax }}{18}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Accuracy Test of RAQMC\_CV algorithm\relax }}{19}
-\contentsline {table}{\numberline {4.3}{\ignorespaces Parameter Setup for all efficienty tests\relax }}{20}
-\contentsline {table}{\numberline {4.4}{\ignorespaces Efficiency test I of RAQMC\_CV\relax }}{20}
-\contentsline {table}{\numberline {4.5}{\ignorespaces Efficiency test II of RAQMC\_CV algorithm with Asian Option\relax }}{21}
-\contentsline {table}{\numberline {4.6}{\ignorespaces Efficiency test II of RAQMC\_CV algorithm with Barrier Option\relax }}{23}
-\contentsline {table}{\numberline {4.7}{\ignorespaces Test of RAQMC\_CV with multivariate normal probability\relax }}{26}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Parameter Setup for accuracy test\relax }}{19}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Accuracy Test of RAQMC\_CV algorithm\relax }}{20}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Parameter Setup for all efficienty tests\relax }}{21}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Efficiency test I of RAQMC\_CV\relax }}{21}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Efficiency test II of RAQMC\_CV algorithm with Asian Option\relax }}{22}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Efficiency test II of RAQMC\_CV algorithm with Barrier Option\relax }}{24}
+\contentsline {table}{\numberline {4.7}{\ignorespaces Test of RAQMC\_CV with multivariate normal probability\relax }}{27}

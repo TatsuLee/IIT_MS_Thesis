@@ -2,30 +2,30 @@
 
 \Section{Discussion}
 
-So far there are only few QMC algorithms that can adaptively determine the sample size needed basing on integrand values. 
+So far there are only few QMC algorithms that can adaptively determine the sample size needed based on integrand values. 
 This is because the estimation of error for QMC is hard. 
-Several studies show that if using quasi-standard error there will be some serious drawbacks\cite{owen2006warnock}. 
+Studies show that if using quasi-standard error there will be some serious drawbacks\cite{owen2006warnock}. 
 There is also a way using internal replications of IID randomized QMC rules, but the number of replications are not known\cite{hickernell2005control}.
 
-For CV with QMC the research progress is also limited since its hard to estimate the value of CV coefficients as we stated in chapter 3. 
-Hickernell and Jim{\'e}nez Rugama (2014) \cite{hickernell2014reliable}'s work on building a QMC method provide a reliable and adaptive way to use QMC, as well as 
-give us insights into combining reliable adaptive QMC with CV.    
-The main idea of the reliable adaptive QMC is to bound the error of estimation using summation of part Walsh coefficients. 
+For CV with QMC the research progress is also limited since it is hard to estimate the value of CV coefficients as we stated in chapter 3. 
+Hickernell and Jim{\'e}nez Rugama (2014) \cite{hickernell2014reliable}'s work on building a QMC method provides a reliable and adaptive way to use QMC, as well as 
+gives us insights into combining reliable adaptive QMC with CV.    
+The main idea of the reliable adaptive QMC is to bound the error of estimation using summation of partial Walsh coefficients. 
 We utilize the same idea for calculating the optimal coefficient for CV.  
 In order to compensate the extra computation cost for CV, we used several techniques in our design to keep those cost minimal.
 
-We test our algorithm on several option pricing problems under Black-Scholes scheme. We found the accuracy of algorithm is consistent and reliable. 
-Comparison of QMC with CV and normal QMC is performed on different pairs of options, the results show that using the proper CV can make improvement over vanilla QMC methods. 
-We also provide an example of computing multivariate normal probability using CV with estimated mean. It shows in certain case multiple CV outperforms single CV.       
+We test our algorithm on several option pricing problems under Black-Scholes scheme. We find the accuracy of algorithm is consistent and reliable. 
+Comparison of QMC with CV and normal QMC is performed on different pairs of options, the results show that using the proper CV we can make improvements over vanilla QMC methods. 
+We also provide an example of computing multivariate normal probability using CV with estimated mean. It is shown in certain cases multiple CV outperforms single CV.       
 
 \newpage
 
 \Section{Future work}
 
-There are several unsolved problems in our work, of which we haven't found the answers yet. 
+There are several unsolved problems in our work, of which we have not found the answers yet. 
 To start with, we use the least square regression solution to approximate the least absolute error regression for CV coefficients. 
 Is there a way to do $\mathcal{L}_1$ regression more efficiently? Can it offer enough improvement on computational cost to compensate its own cost?    
-This leads to the second problem. In our numerical examples we do not update CV coefficients for each iteration. 
-The reason is that we find doing updating requires a lot of recalculations of previous terms, which could reduce the advantage brought by CV. For further research we hope to find a way to update $\beta$ more efficiently.      
-Another possible work for future research is that we can extend this method on rank-1 lattices\cite{rugama2014adaptive}. 
-The idea for getting CV coefficients is the same, but due to the different structure for digital sequences, some effort has to be done for adaption of the method.  
+This leads to the second problem. In our numerical examples we do not update CV coefficients in each iteration. 
+The reason is that we find doing this updating requires a lot of recalculations of previous terms, which could reduce the advantage brought by CV. For further research we hope to find a way to update $\beta$ more efficiently.      
+Another possible work for future research is that we can extend this method to rank-1 lattices\cite{rugama2014adaptive}. 
+The idea for getting CV coefficients is the same, but due to the different points structure compared to digital sequences, some effort has to be done for adaption of the method.  

@@ -1,39 +1,39 @@
 \Chapter{Background}
 \Section{Problem setup}
 
-Numerical integration problems are involved in fields such as physics, mathematical finance, biology, computer graphics, and many others fields. 
+Numerical integration problems are involved in fields such as physics, mathematical finance, biology and computer graphics. 
 It usually happens when it is hard to solve some integral analytically. Therefore, one has to use numerical methods for such problems.  
-MC method is a general way to solve problems in such case\cite{fishman2013monte}. The method can be simply explained in the following way. 
+The MC method is a general way to solve problems in such case\cite{fishman2013monte}. The method can be simply explained in the following way. 
 
 Suppose we have the following standard integration approximation problem whose format is: 
 \begin{equation}
     \label{eq:setup}
     I= \int_{[0,1)^d}f(\mathbf{x})\;\textrm{d}\mathbf{x}.
 \end{equation}
-Then we take a sample of $N$ IID points $\{\mathbf{X}_1,\dots, \mathbf{X}_N\}\in [0,1)^d$ following a uniform distribuation randomly, and construct the following MC estimator:
+Then we take a sample of $N$ IID points $\{\mathbf{X}_1,\dots, \mathbf{X}_N\}\in [0,1)^d$ following a uniform distribution, and construct the following MC estimator:
 \[
     \hat{I}(f)=\frac{1}{N}\sum_{i=1}^{N}f(\mathbf{X_i}).
 \]
 
 However, there are several problems with the IID MC method\cite{niederreiter2010quasi}.
-First, it is difficult to generate truly random samples. Second, an error bound for IID MC works only in probabilistic sense. 
-Last, in many applications the convergence rate of MC method is considered not fast enough. 
+First, it is difficult to generate truly random samples. Second, an error bound for IID MC works only in the probabilistic sense. 
+Last, in many applications the convergence rate of the MC method is considered not fast enough. 
 
-Hence, the QMC method were introduced to address these problems. 
+Hence, the QMC method was introduced to address these problems. 
 The QMC estimator is almost the same as MC estimator. 
-The difference is that the sample points are taken from low discrepency sequence, which is determinsticlly chosen instead of random.   
-We will briefly rewiew one type of such sequence that we used for implementation of our method. 
+The difference is that the sample points are taken from a low discrepency sequence, which is determinsticlly chosen instead of random.   
+We will briefly review one such sequence that we used for implementation of our method. 
 
 \newpage
 
 \Section{Sobol sequence}
 
-Like we mentioned earlier, for QMC we do not use random points, so the question become how to choose such points?  
+Like we mentioned earlier, for QMC we do not use random points, so the question becomes how to choose such points?  
 Naturally, in order to make good approximation we want the error to go to $0$ as sample size $N$ increases, which is:
 \[
     \lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^{N}f(\mathbf{x_i})=\int_{[0,1)^d}f(\mathbf{x})\;\textrm{d}\mathbf{x}.
 \]
-The answer for how to choose such sample points leads to the theory of uniformly distributed modulo one \cite{dick2010digital}. One important property of sequences satisfy such theory is called `fair' interval.
+The answer for how to choose such sample points leads to the theory of uniformly distributed modulo one. One important property of sequences called uniformly distributed modulo one is `fair' interval \cite{dick2010digital}.
 \theoremstyle{definition}
 \begin{definition}{}
 Let $\mathscr{P} =\{\mathbf{X}_1,\dots,\mathbf{X}_N\}$ be a finite point set in $[0, 1)^d$.
@@ -46,7 +46,7 @@ Let $\mathscr{P} =\{\mathbf{X}_1,\dots,\mathbf{X}_N\}$ be a finite point set in 
 
 This simply means that a measurable subset $J$ of a unit cube is fair if the number of sample points in it (left side of equation) is equal to its volume (right side of equation). 
 Similarly, we say a sequence$\mathscr{P}$ is fair if any given subset $J$ is fair.  
-Such fair sequences are ideal for our purpose. Unfortunatelly, it is not attainable unless the demand for all intervals to be fair is weakened. This motivated the definition of $(t,d)$-sequence. 
+Such fair sequences are ideal for our purpose. Unfortunately, it is not attainable unless the demand for all intervals to be fair is weakened. This motivates the definition of $(t,d)$-sequence. 
 \theoremstyle{definition}
 \begin{definition}{}
     For a given dimension $d \geq 1$, an integer base $b \geq 2$, a positive integer m, and an integer t with $0 \leq t < m$, a point set $\mathscr{P} =\{\mathbf{X}_1,\mathbf{X}_2,\dots\}$ in $[0, 1)^d$ is called a $\textit{$(t,d)$-sequence}$ in base $b$ 
@@ -57,13 +57,13 @@ if the point set $\{\mathbf{X}_{kb^m+1},\dots,\mathbf{X}_{kb^m+b^m}\}$ with all 
                     where $s_i,\dots, s_d\in\mathbb{N}_0$ with $s_1+\dots+s_d=k$ and $0\leq a_i < b^{s_i}$  
 \end{definition}
 
-Sobol sequence is the first constructed $(t,d)$-sequence in base 2 \cite{dick2010digital}. Another well known $(t,d)$-sequence is Faure sequence, which is a $(0, d)$-sequences in a base$\geq d$. 
+The Sobol sequence is the first constructed $(t,d)$-sequence in base 2 \cite{dick2010digital}. Another well known $(t,d)$-sequence is Faure sequence, which is a $(0, d)$-sequences in a prime base $b \geq d$. 
 The advantage of Sobol sequence is that it has a small base. 
 Later in next chapter we will see this is a great help since the sample size is in form of $b^m$. 
 Also since we use computer for simulations, we gain some advantages on bit-level operations in base 2.
-Figure~\ref{fg:sobol} shows a comparision between randomly generated sample points and Sobol sequence points. 
+Figure~\ref{fg:sobol} shows a comparision between randomly generated sample points and Sobol sequence points in dimension 2. 
 The latter looks more evenly scattered. 
-In fact by the definition of $(t,d)$-sequence if we devide the unit squre in to $256$ grids evenly ($1\times256, 2\times128,\dots$), there will be exactly one point in each grid.  
+In fact by the definition of $(t,d)$-sequence if we divide the unit square in to $256$ tiles evenly ($1\times256, 2\times128,\dots$), there will be exactly one point in each tile.  
 
 \begin{figure}
     \centering
@@ -80,16 +80,15 @@ In fact by the definition of $(t,d)$-sequence if we devide the unit squre in to 
 \Section{Control variates}
 
 CV is a well known variance reduction technique used in MC simulation. 
-It is ofen used when a 'simpler' version of the origin problem can be solved explicitly. In this section we briefly review the ideas and main results of the method.
+It is ofen used when a `simpler' version that is related to the original problem can be solved explicitly. In this section we briefly review the ideas and main results of the method.
  
-Suppose we want to solve the integration problem~\eqref{eq:setup} showed earlier, now we have a known function $h$ and its value on the interval
+Suppose we want to solve the integration problem~\eqref{eq:setup} showed earlier. Now we have a known function $h$ and its value on the interval
 $\int_{[0,1)^d} h(\mathbf{x})\;\textrm{d}\mathbf{x} = \mathbf{\theta}$. 
-We then construct a new estimator as the following:
+We then construct a new estimator follows:
 \[\ICV(f)=\frac{1}{N}\sum_{i=1}^{N}\Big[ f(\mathbf{X}_i)-\BMC[h(\mathbf{X}_i)-\theta] \Big] \quad s.t.\; \mathbf{X}_i\sim \mathcal{U}[0,1)^d, \;IID.\]
 
 We can easily see it's an unbiased estimator, i.e. $\mathbb{E}(\ICV) = I$.
 Now the question is how should we choose $\BMC$ and why.
-The idea is rather straitforward. 
 We know that the mean square error of the MC estimator is $\mathrm{Var}(\hat{I})+\mathrm{Bias}(\hat{I}^2)$. 
 CV method aims at efficiency improvment, so we need to reduce the mean square error. 
 Since the estimator is unbiased, we only need to minimize its variance.
@@ -99,7 +98,7 @@ First, the variance of $\ICV$ is:
 \begin{align*}
 	\mathrm{Var}(\ICV)
     =&\mathrm{Var}\Big( \frac{1}{N}\sum_{i=1}^{N}\big[ f(\mathbf{X}_i)-\BMC[h(\mathbf{X}_i)-\theta] \big]\Big)\\
-    =&\frac{1}{N}\mathrm{Var}\Big(f(\mathbf{X}_i)-\BMC[h(\mathbf{X}_i)-\theta]\Big)\quad \text{by $X_i$ i.i.d} \\
+    =&\frac{1}{N}\mathrm{Var}\Big(f(\mathbf{X}_i)-\BMC[h(\mathbf{X}_i)-\theta]\Big)\quad \text{by $X_i$ are IID} \\
     =&\frac{1}{N}\mathbb{E}\Big(\big[f(\mathbf{X}_i)-\BMC[h(\mathbf{X}_i)-\theta]-I\big]^2 \Big) \\
     =&\frac{1}{N}\mathbb{E}\Big(\big[ [f(\mathbf{X}_i)-I] -\BMC[h(\mathbf{X}_i)-\theta]\big]^2 \Big) \\
     =&\frac{1}{N}\mathbb{E}\big([f(\mathbf{X}_i)-I]^2-2\BMC[f(X_i)-I][h(\mathbf{X}_i)-\theta]+\BMC^2[h(\mathbf{X}_i)-\theta]^2 \Big)\\
@@ -112,6 +111,7 @@ then the optimal $\BMC$ is given by:
     \BMC^*=\frac{\mathrm{Cov}[f(\mathbf{X}_i),h(\mathbf{X}_i)]}{\mathrm{Var}[h(\mathbf{X}_i)]}.
     \label{eq:optBeta}
 \end{equation}
+Note that in practice since $\mathrm{Cov}[f(\mathbf{X}),h(\mathbf{X})]$ or $\mathrm{Var}[h(\mathbf{X})]$ is unknown we use estimations to compute $\BMC^*$.  
 In this case the variance become:
 \[
     \mathrm{Var}(\ICV)= \frac{\mathrm{Var}[f(\mathbf{X}_i)]}{N}\big(1-\mathrm{corr}^2[f(\mathbf{X}_i), h(\mathbf{X}_i)]\big),
@@ -122,22 +122,24 @@ and note we always have:
 \]
 
 Now we can see the merit of control variates as a variance reduction method. 
-In the worst case, we get a completely uncorrelated $g$ that leads correlation to zero, and we have variance exactly the same as not using control variates. On the other hand, the more correlated our control variates is to the target function, the more variance we can get rid of by using the method.
+In the worst case, we get a completely uncorrelated $h$ that leads correlation to zero, and we have variance exactly the same as not using control variates. On the other hand, the more correlated our control variates is to the target function, the more variance we can get rid of by using the method.
 
 \Section{Reliable adaptive QMC with digital sequence}
 
-One practical problem for QMC method is that how to get the sample size big enough for a required error tolerance. The idea in work of Hickernell and Jim{\'e}nez Rugama (2014)\cite{hickernell2014reliable} is to construct a QMC algorithm with reliable error estimation on digital sequence. Here we briefly summarize their results.
+One practical problem for QMC method is that how to get the sample size big enough for a required error tolerance. 
+The idea in work of Hickernell and Jim{\'e}nez Rugama (2014)\cite{hickernell2014reliable} is to construct a QMC algorithm with reliable error estimatiusing digital sequence. 
+Here we briefly summarize their results.
 
 The error of QMC method on digital sequence can be expressed in terms of Walsh coefficients of the integrand on certain cone conditions. 
 \begin{align}
     \label{eq:errBound}
-    &\text{ if } f \in \mathscr{C}\text{ then } \Big|\int_{[0,1)^d}f(\mathbf{x})\;\textrm{d}\mathbf{x} - \hat{I}_m(f)\Big| \leq a(r,m) \sum_{\lfloor 2^{m-r-1} \rfloor}^{2^{m-r}-1} |\tilde{f}_{m,k}|\\
+    &\text{ if } f \in \mathscr{C}\text{ then } \Big|\int_{[0,1)^d}f(\mathbf{x})\;\textrm{d}\mathbf{x} - \hat{I}_m(f)\Big| \leq a(r,m) \sum_{\lfloor 2^{m-r-1} \rfloor}^{2^{m-r}-1} |\tilde{f}_{m,\kappa}|\\
     &\hat{I}_m(f): = \frac{1}{b^m}\sum_{i=0}^{b^m-1}f(\mathbf{X}_i)
     \text{ $\mathbf{X}_i$ are Sobol points}\notag\\
-    &\tilde{f}_{m,k}=\text{ discrete Walsh coefficients of }f \notag\\
+    &\tilde{f}_{m,\kappa}=\text{ discrete Walsh coefficients of }f \notag\\
     &a(r,m) =\text{ inflation factor that depends on } \mathscr{C} \notag.
 \end{align}
-Here is the defination of the cone condition:
+Here is the definition of the cone condition:
 \begin{align}
    &\mathscr{C}:=\Big\{f\in L^2[0,1)^d:\;\bigcirc \leq \hat{\omega}(m-l)\Diamond,\; l\leq m;\quad
    \Diamond \leq \mathring{\omega}(m-l) \Box, 
@@ -149,11 +151,13 @@ Here is the defination of the cone condition:
    &l^*\in \mathbb{N}\text{ be fixed }; \forall m\in \mathbb{N},\hat{\omega}(m),\mathring{\omega}(m)\geq 0, \text{ and } \lim_{m\to \infty} \hat{\omega}(m)=0,\; \lim_{m\to \infty} \mathring{\omega}(m)=0\notag.
 \end{align}
 
-The first inequality($\bigcirc \leq \Diamond$) means the sum of the larger indexed Walsh coefficients bounds a partial sum of the same coeffcients. 
-Take $l=0, m=12$ for example, in Figure~\ref{fg:cone} the sum of circles should be bounded by some factor times the sum of diamonds. The second inequality($\Diamond\leq \Box$) requires the sum of the larger Walsh coefficients be bounded by the sum of smaller indexed Walsh coefficients. 
+The first inequality ($\bigcirc \leq \Diamond$) means the sum of the larger indexed Walsh coefficients bounds a partial sum of the same coeffcients. 
+Take $b=2,\; l^*=0,\; m=12$ for example. 
+In figure~\ref{fg:cone} the sum of circles should be bounded by some factor times the sum of diamonds. 
+The second inequality ($\Diamond\leq \Box$) requires the sum of the larger Walsh coefficients be bounded by the sum of smaller indexed Walsh coefficients. 
 Take $l=8$ at this time, which means in Figure~\ref{fg:cone} the sum of diamonds should be bounded by some relax factor times the squares.
 
-The cone gives some meanings for the functions about how they should behave to get the error bound formula~\eqref{eq:errBound}. 
+The cone gives some meanings for the functions about how they should behave in order to use the error bound formula~\eqref{eq:errBound}. 
 This means that $|\hat{f}_\kappa|$ does not dramatically bounce back as $\kappa$ goes to infinity. 
 Note that in Figure~\ref{fg:cone} we call circles the error bound, this is proven to be true and under the cone conditions we can estimate it using discrete Walsh coefficients instead of true Walsh coefficients.
 \begin{figure}[h]
