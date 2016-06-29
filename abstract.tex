@@ -4,11 +4,11 @@
 Recently, Quasi-Monte Carlo (QMC) methods have been implemented in a guaranteed adaptive algorithm. 
 This raises the possibility of combining adaptive QMC with efficiency improvement techniques for independent and identically distributed (IID) Monte Carlo (MC) such as control variates (CV). 
 
-The challenge for adding control variates to QMC is that the optimal control variate coefficient for QMC is generally not the same as that for MC. 
-Here we propose a method for implementing control variates in a guaranteed adaptive QMC algorithm. 
+The challenge for adding CV to QMC is that the optimal control variate coefficient for QMC is generally not the same as that for MC. 
+Here we propose a method for implementing CV in a guaranteed adaptive QMC algorithm. 
 One merit of using CV with MC is that theoretically the efficiency is always no worse than vanilla MC. 
 Our method is implemented in an efficient way so that the extra cost for CV is tolerable.
 
 We test our algorithm on various problems including option pricing and multivariate normal probability estimation for dimensions from 4 to 64.  
-The same tests are performed on adaptive QMC algorithm without CV as a comparision. Our results show that with good CV, the cost of adaptive QMC is greatly reduced compared to vanilla QMC.
+The same tests are performed on adaptive QMC algorithm without CV as a comparison. Our results show that with good CV, the cost of adaptive QMC is greatly reduced compared to vanilla QMC.
  \end{abstract}
