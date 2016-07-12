@@ -5,7 +5,7 @@
 Option Pricing has always been a challenging topic in financial mathematics. 
 Although there are several other methods for pricing options, Monte Carlo performs better when solving high dimension problems.
 In this chapter we make several tests on our reliable QMC with CV algorithm with option pricing problems. 
-Note all our experiments are implemented under geomatric brownian motion (GBM) pricing model on non dividend paying stock.  
+Note all our experiments are implemented under geomatric brownian motion (GBM) pricing model on non dividend paying stock. For construnction of brownian motion we use principal component analysis method.
 Since the GBM model is a well known model for option pricing, we only lay out the parameters for option formulas we use later and not dig into the model itself. 
 \begin{align*}
     S(jT/d)&=\text{current asset price at time $jT/d,\; j=1,\dots,d$}\\
@@ -179,14 +179,14 @@ The second CV does not make an obvious improvement compared to single CV but see
 
 \begin{figure}[h]
     \centering
-    %\setlength{\unitlength}{0.14in}     % selecting unit length
+    \setlength{\unitlength}{0.14in}     % selecting unit length
     \includegraphics[width=\textwidth]{figures/cvEx1.eps}
     \caption{Walsh coefficients of $f$}
     \label{fg:cvEX1}
 \end{figure}
 
-Figure~\ref{fg:cvEX1} is a plot of the walsh coefficients for the target function and control variates in this Asian options experiments. Recall our error of approximation is bound on this exact same coeffcients. 
-What we'd expect is that on both methods it can decrease fast but faster for CV method.   
+Figure~\ref{fg:cvEX1} is a plot of the Walsh coefficients for the target function and control variates in this Asian options experiments. Recall our error of approximation is bound on this exact same coeffcients. 
+What we expect is that for both methods the Walsh coefficient should decrease.   
 The horizontal axis in the figure can be interpreted as the sample size, the vertical axis can be view as the error bound. 
 What our algorithm does is that for a given error bound, we monitor these Walsh coefficients untill it reaches the bound. Obviously, the CV method will stop early in this case which means less compuational cost for it. 
 

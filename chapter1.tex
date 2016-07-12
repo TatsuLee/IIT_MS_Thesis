@@ -4,7 +4,7 @@
 
 Recently there are some great results from construction of Quasi-Monte Carlo (QMC) methods that can adaptively choose a sample size for given error tolerances\cite{hickernell2014reliable}.   
 Our work tries to combine the reliable adaptive QMC (RAQMC) methods with control variates (CV). 
-We justify the theory behind it, construct a practical algorithm which can be implemented and tested through high dimensional integration problems.
+We justify the theory behind it, construct a practical algorithm and test our algorithm wth high dimensional integration problems.
 
 CV is a variance reduction technique for independent and identically distributed (IID) Monte Carlo (MC) methods.
 QMC can be viewed as a deterministic version of IID MC, which outperforms MC for many integrals\cite{avramidis1996integrated}. 
@@ -21,4 +21,5 @@ This requires us to figure out a new way to get the optimal coefficients for CV 
 In chapter 2 we first briefly talk about QMC rules and their difference from IID MC. 
 Then we introduce CV and the RAQMC algorithm. 
 In Chapter 3 we derive our method and provide its justification.
-In chapter 4 we demonstrate results from several numerical experiments. For the final chapter we conclude the results and discuss unsolved problems as well as possible improvements to our method.
+In chapter 4 we provide results from several numerical experiments. 
+For the final chapter we discuss the results and identify unsolved problems as well as possible improvements to our method.

@@ -25,17 +25,17 @@
 \contentsline {chapter}{\makebox [0.75in][r]{3.}\hspace *{3pt} \uppercase {Reliable adaptive QMC with CV}}{10}
 \vspace *{10pt}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.1.} \hspace *{3pt}Idea to add control variates to reliable adaptive QMC}{10}
+\contentsline {section}{\makebox [0.3in][r]{3.1.} \hspace *{3pt}Idea to add CV to reliable adaptive QMC}{10}
 \vspace {-10pt}
 \contentsline {section}{\makebox [0.3in][r]{3.2.} \hspace *{3pt}The problem of CV with randomized QMC}{10}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.3.} \hspace *{3pt}A new way to find $\beta $}{11}
+\contentsline {section}{\makebox [0.3in][r]{3.3.} \hspace *{3pt}A new way to find $\boldsymbol {\beta }$}{12}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.4.} \hspace *{3pt}The problem with $\theta $}{13}
+\contentsline {section}{\makebox [0.3in][r]{3.4.} \hspace *{3pt}The problem with $\boldsymbol {\theta }$}{12}
 \vspace {-10pt}
 \contentsline {section}{\makebox [0.3in][r]{3.5.} \hspace *{3pt}The modified method}{14}
 \vspace {-10pt}
-\contentsline {section}{\makebox [0.3in][r]{3.6.} \hspace *{3pt}The Algorithm}{15}
+\contentsline {section}{\makebox [0.3in][r]{3.6.} \hspace *{3pt}The Algorithm}{14}
 \vspace *{3pt}
 \contentsline {chapter}{\makebox [0.75in][r]{4.}\hspace *{3pt} \uppercase {Numerical Experiment}}{17}
 \vspace *{10pt}

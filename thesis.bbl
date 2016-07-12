@@ -1,8 +1,11 @@
 \begin{thebibliography}{10}
 
 \bibitem{hickernell2014reliable}
-F.~J. Hickernell and L.~A.~J. Rugama, ``Reliable adaptive cubature using
-  digital sequences,'' {\em arXiv preprint arXiv:1410.8615}, 2014.
+F.~J. Hickernell and L.~A.~J. ́enez Rugama, ``Reliable adaptive cubature using
+  digital sequences,'' in {\em Monte Carlo and Quasi-Monte Carlo Methods:
+  MCQMC, Leuven, Belgium, April 2014 (R. Cools and D. Nuyens, eds.)}, Springer
+  Proceedings in Mathematics and Statistics, Springer-Verlag, Berlin, 2016+, to
+  appear, arXiv:1410.8615 [math.NA].
 
 \bibitem{avramidis1996integrated}
 A.~N. Avramidis and J.~R. Wilson, ``Integrated variance reduction strategies
@@ -59,7 +62,10 @@ A.~Genz, ``Numerical computation of rectangular bivariate and trivariate normal
   pp.~251--260, 2004.
 
 \bibitem{rugama2014adaptive}
-L.~A.~J. Rugama and F.~J. Hickernell, ``Adaptive multidimensional integration
-  based on rank-1 lattices,'' {\em arXiv preprint arXiv:1411.1966}, 2014.
+L.~A.~J. ́enez Rugama and F.~J. Hickernell, ``Adaptive multidimensional
+  integration based on rank-1 lattices,'' in {\em Monte Carlo and Quasi-Monte
+  Carlo Methods: MCQMC, Leuven, Belgium, April 2014 (R. Cools and D. Nuyens,
+  eds.)}, Springer Proceedings in Mathematics and Statistics, Springer-Verlag,
+  Berlin, 2016+, to appear, arXiv:1411.1966.
 
 \end{thebibliography}

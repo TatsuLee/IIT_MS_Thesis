@@ -21,7 +21,7 @@ Last, in many applications the convergence rate of the MC method is considered n
 
 Hence, the QMC method was introduced to address these problems. 
 The QMC estimator is almost the same as MC estimator. 
-The difference is that the sample points are taken from a low discrepency sequence, which is determinsticlly chosen instead of random.   
+The difference is that the sample points are taken from a low discrepancy sequence, which is deterministically chosen instead of random.   
 We will briefly review one such sequence that we used for implementation of our method. 
 
 \newpage
@@ -29,11 +29,12 @@ We will briefly review one such sequence that we used for implementation of our 
 \Section{Sobol sequence}
 
 Like we mentioned earlier, for QMC we do not use random points, so the question becomes how to choose such points?  
-Naturally, in order to make good approximation we want the error to go to $0$ as sample size $N$ increases, which is:
+Naturally, in order to make a good approximation we want the error to go to $0$ as sample size $N$ increases, that is:
 \[
     \lim_{N\to\infty}\frac{1}{N}\sum_{i=1}^{N}f(\mathbf{x_i})=\int_{[0,1)^d}f(\mathbf{x})\;\textrm{d}\mathbf{x}.
 \]
-The answer for how to choose such sample points leads to the theory of uniformly distributed modulo one. One important property of sequences called uniformly distributed modulo one is `fair' interval \cite{dick2010digital}.
+The answer for how to choose such sample points leads to the theory of uniformly distributed sequences. 
+One important property of such sequences is the ``fair'' interval \cite{dick2010digital}.
 \theoremstyle{definition}
 \begin{definition}{}
 Let $\mathscr{P} =\{\mathbf{X}_1,\dots,\mathbf{X}_N\}$ be a finite point set in $[0, 1)^d$.
@@ -45,8 +46,8 @@ Let $\mathscr{P} =\{\mathbf{X}_1,\dots,\mathbf{X}_N\}$ be a finite point set in 
 \end{definition}
 
 This simply means that a measurable subset $J$ of a unit cube is fair if the number of sample points in it (left side of equation) is equal to its volume (right side of equation). 
-Similarly, we say a sequence$\mathscr{P}$ is fair if any given subset $J$ is fair.  
-Such fair sequences are ideal for our purpose. Unfortunately, it is not attainable unless the demand for all intervals to be fair is weakened. This motivates the definition of $(t,d)$-sequence. 
+Ideally, we want a sequence $\mathscr{P}$ that is fair for any given subset $J$. But such sequences do not exist. 
+Hence, the condition for all intervals to be fair has to be weakened. This motivates the definition of $(t,d)$-sequence \cite{dick2010digital}. 
 \theoremstyle{definition}
 \begin{definition}{}
     For a given dimension $d \geq 1$, an integer base $b \geq 2$, a positive integer m, and an integer t with $0 \leq t < m$, a point set $\mathscr{P} =\{\mathbf{X}_1,\mathbf{X}_2,\dots\}$ in $[0, 1)^d$ is called a $\textit{$(t,d)$-sequence}$ in base $b$ 
@@ -57,9 +58,9 @@ if the point set $\{\mathbf{X}_{kb^m+1},\dots,\mathbf{X}_{kb^m+b^m}\}$ with all 
                     where $s_i,\dots, s_d\in\mathbb{N}_0$ with $s_1+\dots+s_d=k$ and $0\leq a_i < b^{s_i}$  
 \end{definition}
 
-The Sobol sequence is the first constructed $(t,d)$-sequence in base 2 \cite{dick2010digital}. Another well known $(t,d)$-sequence is Faure sequence, which is a $(0, d)$-sequences in a prime base $b \geq d$. 
+The Sobol sequence is the first constructed $(t,d)$-sequence in base 2 \cite{dick2010digital}. Another well known $(t,d)$-sequence is the Faure sequence, which is a $(0, d)$-sequences in a prime base $b \geq d$. 
 The advantage of Sobol sequence is that it has a small base. 
-Later in next chapter we will see this is a great help since the sample size is in form of $b^m$. 
+Later in next chapter we will see this is a great help since the sample size takes the form of $b^m$. 
 Also since we use computer for simulations, we gain some advantages on bit-level operations in base 2.
 Figure~\ref{fg:sobol} shows a comparision between randomly generated sample points and Sobol sequence points in dimension 2. 
 The latter looks more evenly scattered. 
@@ -80,17 +81,17 @@ In fact by the definition of $(t,d)$-sequence if we divide the unit square in to
 \Section{Control variates}
 
 CV is a well known variance reduction technique used in MC simulation. 
-It is ofen used when a `simpler' version that is related to the original problem can be solved explicitly. In this section we briefly review the ideas and main results of the method.
+It is ofen used when a ``simpler'' problem that is related to the original problem can be solved explicitly. In this section we briefly review the ideas and main results of the method.
  
-Suppose we want to solve the integration problem~\eqref{eq:setup} showed earlier. Now we have a known function $h$ and its value on the interval
-$\int_{[0,1)^d} h(\mathbf{x})\;\textrm{d}\mathbf{x} = \mathbf{\theta}$. 
-We then construct a new estimator follows:
-\[\ICV(f)=\frac{1}{N}\sum_{i=1}^{N}\Big[ f(\mathbf{X}_i)-\BMC[h(\mathbf{X}_i)-\theta] \Big] \quad s.t.\; \mathbf{X}_i\sim \mathcal{U}[0,1)^d, \;IID.\]
+Suppose we want to solve the integration problem~\eqref{eq:setup} showed earlier. Now suppose we know a function $h$ and the integral  
+$\theta=\int_{[0,1)^d} h(\mathbf{x})\;\textrm{d}\mathbf{x}$. 
+We then construct a new estimator:
+\[\ICV(f)=\frac{1}{N}\sum_{i=1}^{N}\Big[ f(\mathbf{X}_i)-\BMC[h(\mathbf{X}_i)-\theta] \Big] \quad s.t.\; \mathbf{X}_i\sim \mathcal{U}[0,1)^d, \;\textrm{IID}.\]
 
 We can easily see it's an unbiased estimator, i.e. $\mathbb{E}(\ICV) = I$.
 Now the question is how should we choose $\BMC$ and why.
 We know that the mean square error of the MC estimator is $\mathrm{Var}(\hat{I})+\mathrm{Bias}(\hat{I}^2)$. 
-CV method aims at efficiency improvment, so we need to reduce the mean square error. 
+The CV method aims at efficiency improvment, so we need to reduce the mean square error. 
 Since the estimator is unbiased, we only need to minimize its variance.
 Hence, the optimal $\BMC$ should be the one that minmize the variance of esimator.
 Here we give a simple derivation of optimal $\BMC$ for single CV.
@@ -98,12 +99,12 @@ First, the variance of $\ICV$ is:
 \begin{align*}
 	\mathrm{Var}(\ICV)
     =&\mathrm{Var}\Big( \frac{1}{N}\sum_{i=1}^{N}\big[ f(\mathbf{X}_i)-\BMC[h(\mathbf{X}_i)-\theta] \big]\Big)\\
-    =&\frac{1}{N}\mathrm{Var}\Big(f(\mathbf{X}_i)-\BMC[h(\mathbf{X}_i)-\theta]\Big)\quad \text{by $X_i$ are IID} \\
+    =&\frac{1}{N}\mathrm{Var}\Big(f(\mathbf{X}_i)-\BMC[h(\mathbf{X}_i)-\theta]\Big)\quad \text{by $\mathrm{X}_i$ are IID} \\
     =&\frac{1}{N}\mathbb{E}\Big(\big[f(\mathbf{X}_i)-\BMC[h(\mathbf{X}_i)-\theta]-I\big]^2 \Big) \\
     =&\frac{1}{N}\mathbb{E}\Big(\big[ [f(\mathbf{X}_i)-I] -\BMC[h(\mathbf{X}_i)-\theta]\big]^2 \Big) \\
     =&\frac{1}{N}\mathbb{E}\big([f(\mathbf{X}_i)-I]^2-2\BMC[f(X_i)-I][h(\mathbf{X}_i)-\theta]+\BMC^2[h(\mathbf{X}_i)-\theta]^2 \Big)\\
     =&\frac{1}{N}\Big(\mathrm{Var}[f(\mathbf{X}_i)]-2\BMC\mathrm{Cov}[f(X_i),h(\mathbf{X}_i)]+\BMC^2\mathrm{Var}[h(\mathbf{X}_i)]\Big)\\
-    =&\frac{1}{N}\Big(\mathrm{Var}[h(\mathbf{X}_i)](\BMC-\frac{\mathrm{Cov}[f(X_i),h(\mathbf{X}_i)]}{\mathrm{Var}[h(\mathbf{X}_i)]})^2+\\
+    =&\frac{1}{N}\Big(\mathrm{Var}[h(\mathbf{X}_i)]\big(\BMC-\frac{\mathrm{Cov}[f(X_i),h(\mathbf{X}_i)]}{\mathrm{Var}[h(\mathbf{X}_i)]}\big)^2+\\
      &\quad \quad \mathrm{Var}[f(\mathbf{X}_i]-\frac{\mathrm{Cov}^2[f(\mathbf{X}_i),h(\mathbf{X}_i)]}{\mathrm{Var}[h(\mathbf{X}_i)]} \Big),
 \end{align*}
 then the optimal $\BMC$ is given by: 
@@ -133,9 +134,9 @@ Here we briefly summarize their results.
 The error of QMC method on digital sequence can be expressed in terms of Walsh coefficients of the integrand on certain cone conditions. 
 \begin{align}
     \label{eq:errBound}
-    &\text{ if } f \in \mathscr{C}\text{ then } \Big|\int_{[0,1)^d}f(\mathbf{x})\;\textrm{d}\mathbf{x} - \hat{I}_m(f)\Big| \leq a(r,m) \sum_{\lfloor 2^{m-r-1} \rfloor}^{2^{m-r}-1} |\tilde{f}_{m,\kappa}|\\
+    &\text{ if } f \in \mathscr{C}\text{ then } \Big|\int_{[0,1)^d}f(\mathbf{x})\;\textrm{d}\mathbf{x} - \hat{I}_m(f)\Big| \leq a(r,m) \sum_{\lfloor b^{m-r-1} \rfloor}^{b^{m-r}-1} |\tilde{f}_{m,\kappa}|\\
     &\hat{I}_m(f): = \frac{1}{b^m}\sum_{i=0}^{b^m-1}f(\mathbf{X}_i)
-    \text{ $\mathbf{X}_i$ are Sobol points}\notag\\
+    \text{ ,$\;\mathbf{X}_i\in$ digital sequence}\notag\\
     &\tilde{f}_{m,\kappa}=\text{ discrete Walsh coefficients of }f \notag\\
     &a(r,m) =\text{ inflation factor that depends on } \mathscr{C} \notag.
 \end{align}
@@ -146,15 +147,15 @@ Here is the definition of the cone condition:
    \; l^*\leq l \leq m\Big\}\notag\\
    \label{eq:cone}
    &\bigcirc:= \sum_{\kappa=\lfloor b^{l-1} \rfloor}^{b^l-1} \sum_{\lambda=1}^{\infty}| \hat{f}_{\kappa+\lambda b^m}|,\quad  
-   \Box:= \sum_{\kappa=b^{l-1}}^{b^l-1}|\hat{f}_\kappa|,\quad
-   \Diamond:=\sum_{\kappa=b^m}^{\infty}|\hat{f}_{\kappa}|\\
+   \Diamond:=\sum_{\kappa=b^m}^{\infty}|\hat{f}_{\kappa}|,\quad
+   \Box:= \sum_{\kappa=b^{l-1}}^{b^l-1}|\hat{f}_\kappa|\\
    &l^*\in \mathbb{N}\text{ be fixed }; \forall m\in \mathbb{N},\hat{\omega}(m),\mathring{\omega}(m)\geq 0, \text{ and } \lim_{m\to \infty} \hat{\omega}(m)=0,\; \lim_{m\to \infty} \mathring{\omega}(m)=0\notag.
 \end{align}
 
-The first inequality ($\bigcirc \leq \Diamond$) means the sum of the larger indexed Walsh coefficients bounds a partial sum of the same coeffcients. 
+The first inequality ($\bigcirc \leq \Diamond$) tries to bound the partial sum of Walsh coefficients with the entire sum of the same Walsh coefficients. 
 Take $b=2,\; l^*=0,\; m=12$ for example. 
 In figure~\ref{fg:cone} the sum of circles should be bounded by some factor times the sum of diamonds. 
-The second inequality ($\Diamond\leq \Box$) requires the sum of the larger Walsh coefficients be bounded by the sum of smaller indexed Walsh coefficients. 
+Now since we still can not estimate sum of Walsh coefficients in the form of $\Diamond$, the second inequality ($\Diamond\leq \Box$) tries to bound the sum of the larger indexed Walsh coefficients by the sum of smaller indexed Walsh coefficients. 
 Take $l=8$ at this time, which means in Figure~\ref{fg:cone} the sum of diamonds should be bounded by some relax factor times the squares.
 
 The cone gives some meanings for the functions about how they should behave in order to use the error bound formula~\eqref{eq:errBound}. 
