@@ -7,7 +7,7 @@ This raises the possibility of combining adaptive QMC with efficiency improvemen
 The challenge for adding CV to QMC is that the optimal CV coefficient for QMC is generally not the same as that for MC. 
 Here we propose a method for implementing CV in a reliable adaptive QMC algorithm. 
 One merit of using CV with MC is that theoretically the efficiency is always no worse than vanilla MC. 
-Our method is implemented in an efficient way so that the extra cost for CV is tolerable.
+Our method is implemented in an efficient way so that the extra cost for CV is tolerable, and the overall time savings can be substantial.
 
 We test our algorithm on various problems including option pricing and multivariate normal probability estimation for dimensions from 4 to 64.  
 The same tests are performed on adaptive QMC algorithm without CV as a comparison. Our results show that with good CV, the cost of adaptive QMC is greatly reduced compared to vanilla QMC.
